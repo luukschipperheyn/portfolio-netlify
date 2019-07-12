@@ -9,41 +9,68 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   // interpreter if not a single content uses it. Therefore, we're putting them
   // through `createNodeField` so that the fields still exist and GraphQL won't
   // trip up. An empty string is still required in replacement to `null`.
-
   switch (node.internal.type) {
-    case 'MarkdownRemark': {
-      const { permalink, layout } = node.frontmatter
-      const { relativePath } = getNode(node.parent)
+    case 'MarkdownRemark':
+      {
+        const { permalink, layout } = node.frontmatter
+        const { relativePath } = getNode(node.parent)
 
-      let slug = permalink
+        let slug = permalink
 
-      if (!slug) {
-        slug = `/${relativePath.replace('.md', '')}/`
+        if (!slug) {
+          slug = `/${relativePath.replace('.md', '')}/`
+        }
+
+        // Used to generate URL to view this content.
+        createNodeField({
+          node,
+          name: 'slug',
+          value: slug || ''
+        })
+
+        // Used to determine a page layout.
+        createNodeField({
+          node,
+          name: 'layout',
+          value: layout || ''
+        })
       }
+      break
+    case 'ProjectsJson':
+      {
+        const { permalink, layout } = node.metadata
+        const { relativePath } = getNode(node.parent)
 
-      // Used to generate URL to view this content.
-      createNodeField({
-        node,
-        name: 'slug',
-        value: slug || ''
-      })
+        let slug = permalink
 
-      // Used to determine a page layout.
-      createNodeField({
-        node,
-        name: 'layout',
-        value: layout || ''
-      })
-    }
+        if (!slug) {
+          slug = `/${relativePath.replace('.json', '')}/`
+        }
+
+        // Used to generate URL to view this content.
+        createNodeField({
+          node,
+          name: 'slug',
+          value: slug || ''
+        })
+
+        // Used to determine a page layout.
+        createNodeField({
+          node,
+          name: 'layout',
+          value: layout || ''
+        })
+      }
+      break
   }
 }
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const allMarkdown = await graphql(`
+  const allProjects = await graphql(`
     {
-      allMarkdownRemark(limit: 1000) {
+      allProjectsJson {
         edges {
           node {
             fields {
@@ -56,12 +83,12 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  if (allMarkdown.errors) {
-    console.error(allMarkdown.errors)
-    throw new Error(allMarkdown.errors)
+  if (allProjects.errors) {
+    console.error(allProjects.errors)
+    throw new Error(allProjects.errors)
   }
 
-  allMarkdown.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  allProjects.data.allProjectsJson.edges.forEach(({ node }) => {
     const { slug, layout } = node.fields
 
     createPage({

@@ -5,9 +5,11 @@ import { StaticQuery, graphql } from 'gatsby'
 import 'modern-normalize'
 import '../styles/normalize'
 
-import Header from '../components/Header'
 import LayoutRoot from '../components/LayoutRoot'
 import LayoutMain from '../components/LayoutMain'
+import Menu from '../components/Menu'
+import styled from '@emotion/styled'
+import { breakpoints } from '../styles/variables'
 
 interface StaticQueryProps {
   site: {
@@ -19,7 +21,17 @@ interface StaticQueryProps {
   }
 }
 
-const IndexLayout: React.FC = ({ children }) => (
+const StyledMenu = styled(Menu)`
+  width: 200px;
+  @media screen and (max-width: ${breakpoints.md}px) {
+    width: 100%;
+  }
+`
+const StyledLayoutMain = styled(LayoutMain)`
+  flex: 1;
+`
+
+const IndexLayout: React.FC = ({ children, location }) => (
   <StaticQuery
     query={graphql`
       query IndexLayoutQuery {
@@ -40,8 +52,8 @@ const IndexLayout: React.FC = ({ children }) => (
             { name: 'keywords', content: data.site.siteMetadata.keywords }
           ]}
         />
-        <Header title={data.site.siteMetadata.title} />
-        <LayoutMain>{children}</LayoutMain>
+        <StyledMenu location={location} />
+        <StyledLayoutMain>{children}</StyledLayoutMain>
       </LayoutRoot>
     )}
   />

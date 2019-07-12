@@ -1,6 +1,23 @@
 /* eslint-disable max-len */
 
 export const colors = {
+  black: '#000000',
+  darkerGrey: '#122',
+  darkGrey: '#21252b',
+  grey: '#5a5a5a',
+  lightGrey: '#eee',
+  white: '#ffffff',
+  red: '#f44747',
+  darkYellow: '#b8b500',
+  yellow: '#e2c08d',
+  darkGreen: '#008000',
+  green: '#4d9e4d',
+  turqoise: '#4EC9B0',
+  darkBlue: '#000080',
+  blue: '#0097fb',
+  lightBlue: '#9CDCFE',
+  purple: '#6c6cc4',
+  pink: '#b267e6',
   brand: '#663399',
   lilac: '#9d7cbf',
   accent: '#ffb238',
@@ -16,9 +33,7 @@ export const colors = {
     dark: 'hsla(270, 17.119554496%, 0%, 0.92)',
     copy: 'hsla(270, 15.797828016000002%, 0%, 0.88)',
     calm: 'rgba(0, 0, 0, 0.54)'
-  },
-  white: '#fff',
-  black: '#000'
+  }
 }
 
 export const fonts = {

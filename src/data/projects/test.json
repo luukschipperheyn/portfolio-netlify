@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "slug": "test",
+    "layout": "project"
+  },
+  "title": "Test project page",
+  "content": [
+    {
+      "image": "../assets/images/screenshot.png",
+      "text": "this is a screenshot of something I made"
+    },
+    {
+      "image": "../assets/images/bernard.jpg",
+      "text": "this is a photo of a guy I rented a bunker from. His name is not Bernard but it was something like that"
+    },
+    {
+      "image": "../assets/images/harses.jpg",
+      "text": "this is a very cool thingy"
+    },
+    {
+      "image": "../assets/images/luuk.png",
+      "text": "this is me. Greetings from me!!"
+    }
+  ]
+}

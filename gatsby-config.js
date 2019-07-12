@@ -21,6 +21,19 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/data/`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/data/assets/images`,
+        name: 'images'
+      }
+    },
+    {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
@@ -44,13 +57,16 @@ module.exports = {
         ]
       }
     },
-    'gatsby-transformer-json',
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
         siteUrl: 'https://gatsby-starter-typescript-plus.netlify.com'
       }
     },
+    `gatsby-plugin-layout`,
+    'gatsby-transformer-json',
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-json`,
     'gatsby-plugin-emotion',
     'gatsby-plugin-typescript',
     'gatsby-plugin-sharp',

@@ -21,7 +21,7 @@ export default `
     width: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
-    font-family: ${fonts.sansSerif};
+    font-family: ${fonts.monospace};
     color: ${colors.black};
     background-color: ${colors.white};
     -webkit-text-size-adjust: 100%;
@@ -29,7 +29,7 @@ export default `
   }
 
   a {
-    color: ${colors.brand};
+    color: ${colors.green};
     text-decoration: none;
 
     &:hover,
@@ -86,7 +86,9 @@ export default `
   h1, h2, h3, h4, h5, h6 {
     margin-top: 1.414rem;
     margin-bottom: .5rem;
+    background: ${colors.pink};
     color: ${colors.black};
+    display: inline-block;
     font-weight: 600;
     line-height: ${dimensions.lineHeight.heading};
     text-rendering: optimizeLegibility;
@@ -122,7 +124,12 @@ export default `
   ol,
   dl {
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
+    padding-left: 0.5rem;
+  }
+
+  li {
+    list-style: none;
   }
 
   dt {

@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "slug": "henk",
+    "layout": "project"
+  },
+  "title": "henk",
+  "content": [
+    {
+      "image": "../assets/images/robwilders.jpg",
+      "text": "yes yes this is very great"
+    },
+    {
+      "image": "../assets/images/koortsmeet.jpg",
+      "text": "look at this. wow"
+    },
+    {
+      "image": "../assets/images/fjdiaosjfaosd.jpg",
+      "text": "hohoieheiahae aehiro eah aehoaehior"
+    }
+  ]
+}
