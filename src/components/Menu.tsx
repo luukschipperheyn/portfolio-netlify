@@ -103,7 +103,7 @@ const Menu: React.FunctionComponent<Props> = ({ className }) => (
               </List>
             </CollapsibleList>
             {/* <MenuLink to="/">about</MenuLink> */}
-            <MenuLink to="/luuk/">luuk</MenuLink>
+            <MenuLink to="/luuk/">about</MenuLink>
           </MenuInner>
         </StyledMenu>
       )
