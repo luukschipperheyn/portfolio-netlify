@@ -5,11 +5,11 @@ import normalize from '../styles/normalize'
 import { colors, breakpoints } from '../styles/variables'
 
 const StyledLayoutRoot = styled.div`
-  display: flex;
-  flex-direction: row;
   min-height: 100vh;
   background: ${colors.darkGrey};
   color: ${colors.white};
+  display: flex;
+  flex-direction: row;
 
   h3 {
     background: none;
@@ -17,7 +17,7 @@ const StyledLayoutRoot = styled.div`
   }
 
   @media screen and (max-width: ${breakpoints.md}px) {
-    flex-direction: column;
+    display: block;
   }
 `
 

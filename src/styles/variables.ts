@@ -10,7 +10,7 @@ export const colors = {
   red: '#f44747',
   darkYellow: '#b8b500',
   yellow: '#e2c08d',
-  darkGreen: '#008000',
+  darkGreen: '#004040',
   green: '#4d9e4d',
   turqoise: '#4EC9B0',
   darkBlue: '#000080',
@@ -34,6 +34,12 @@ export const colors = {
     copy: 'hsla(270, 15.797828016000002%, 0%, 0.88)',
     calm: 'rgba(0, 0, 0, 0.54)'
   }
+}
+
+export const uiColors = {
+  active: { background: colors.darkBlue, text: colors.white },
+  expandable: { background: colors.pink, text: colors.black },
+  collapsible: { background: colors.yellow, text: colors.black }
 }
 
 export const fonts = {

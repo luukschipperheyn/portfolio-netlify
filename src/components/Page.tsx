@@ -9,12 +9,8 @@ const StyledPage = styled.div`
   flex: 1;
   position: relative;
   padding: ${dimensions.containerPadding}rem;
-  margin-bottom: 3rem;
-
-  a {
-    background: ${colors.lightBlue};
-    color: ${colors.black};
-  }
+  max-width: 100%;
+  // border-right: 1px solid ${colors.grey};
 `
 
 interface PageProps {

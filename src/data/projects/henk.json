@@ -1,7 +1,8 @@
 {
   "metadata": {
     "slug": "henk",
-    "layout": "project"
+    "layout": "project",
+    "tags": ["interactive-installation", "processing"]
   },
   "title": "henk",
   "content": [
@@ -12,10 +13,6 @@
     {
       "image": "../assets/images/koortsmeet.jpg",
       "text": "look at this. wow"
-    },
-    {
-      "image": "../assets/images/fjdiaosjfaosd.jpg",
-      "text": "hohoieheiahae aehiro eah aehoaehior"
     }
   ]
 }

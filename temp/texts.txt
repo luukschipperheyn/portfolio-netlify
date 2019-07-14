@@ -1,0 +1,85 @@
+projects
+
+apartheid revisited
+  meta
+    technologies
+    summary
+  content
+    ruiter janssen
+    taking his approach into the digital realm
+    zooming in, getting lost
+    experimental approach
+    early prototype
+    collaboration
+    three.js, blender, json
+
+woningmarkt
+  meta
+    technologies
+    summary
+  content
+    maurice geluk, wie bezit onze stad
+    translation data to interactive. presentation. navigation
+    in an appealing way find what's interesting to you
+    collaboration
+    illustrator svg export
+    google sheets
+
+openr
+  meta
+    technologies
+    summary
+  content
+    openr is a service for...
+    intercom
+    access control
+    maintained project
+    optimizations
+    app creation
+    production app that needs to just work
+
+mgnt
+  meta
+    technologies
+    summary
+  content
+    installation on strp
+    ode to early electronic music
+    just copy from website
+    concept
+    early prototypes
+    computer vision
+    tech management
+
+stedin
+  meta
+    technologies
+    summary
+  content
+    communication of USEF concept to clients and internally
+    model
+    video?
+    raspberry pi inside
+    google sheets export scenarios
+
+women=men
+  meta
+    technologies
+    summary
+  content
+    installation that literally takes you inside the head of either a man or a woman
+    reflect upon differences
+    hear stories
+    see scenery
+
+vpro
+  meta
+    technologies
+    summary
+  content
+    dutch broadcaster
+    front-end development
+    creative coding
+    link to website
+    link to waarisdit
+    cinema.nl

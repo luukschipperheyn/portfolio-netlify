@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "slug": "test",
+    "slug": "bar",
     "layout": "project",
-    "tags": ["app", "android"]
+    "tags": ["website", "javascript"]
   },
-  "title": "Test project page",
+  "title": "bla bla",
   "content": [
     {
       "image": "../assets/images/screenshot.png",

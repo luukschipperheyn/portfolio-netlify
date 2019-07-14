@@ -2,8 +2,31 @@
 
 const path = require('path')
 
+exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
+  const { createNode } = actions
+
+  const myData = []
+
+  const nodeContent = JSON.stringify(myData)
+
+  const nodeMeta = {
+    id: createNodeId(`source-tags`),
+    parent: null,
+    children: [],
+    internal: {
+      type: 'tags',
+      mediaType: `text/html`,
+      content: nodeContent,
+      contentDigest: createContentDigest(myData)
+    }
+  }
+
+  const node = Object.assign({}, myData, nodeMeta)
+  createNode(node)
+}
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+  const { createNodeField, createNode } = actions
 
   // Sometimes, optional fields tend to get not picked up by the GraphQL
   // interpreter if not a single content uses it. Therefore, we're putting them
@@ -68,9 +91,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const allProjects = await graphql(`
+  const allMarkdown = await graphql(`
     {
-      allProjectsJson {
+      allMarkdownRemark(limit: 1000) {
         edges {
           node {
             fields {
@@ -83,12 +106,12 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  if (allProjects.errors) {
-    console.error(allProjects.errors)
-    throw new Error(allProjects.errors)
+  if (allMarkdown.errors) {
+    console.error(allMarkdown.errors)
+    throw new Error(allMarkdown.errors)
   }
 
-  allProjects.data.allProjectsJson.edges.forEach(({ node }) => {
+  allMarkdown.data.allMarkdownRemark.edges.forEach(({ node }) => {
     const { slug, layout } = node.fields
 
     createPage({

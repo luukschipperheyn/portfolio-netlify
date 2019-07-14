@@ -1,52 +1,48 @@
-import * as React from 'react'
-import Container from '../components/Container'
+import React, { FunctionComponent } from 'react'
 import Page from '../components/Page'
-import { Link } from 'gatsby'
-import css from '@emotion/css'
 import CollapsibleList from '../components/CollapsibleList'
-import List from '../components/List'
-import styled from '@emotion/styled'
-import { colors } from '../styles/variables'
+import styled from '@emotion/styled-base'
+import css from '@emotion/css'
+import { StaticQuery, graphql, Link } from 'gatsby'
+import Img from 'gatsby-image/withIEPolyfill'
 
-const StyledLi = styled.li`
-  color: ${colors.blue};
+const CL = styled(CollapsibleList)`
+  display: inline;
+  margin-left: 0.1rem;
+  ul {
+    display: inline;
+  }
+`
+const StyledImg = styled(Img)`
+  position: relative;
+  top: 0.25rem;
 `
 
-const IndexPage = () => (
-  <Page>
-    <Container>
-      <div>
-        <h1>Hi, I'm Luuk</h1>
-      </div>
-      <div>
-        <h3
-          css={css`
-            margin: 16px 0 32px;
-          `}
-        >
-          I make stuff on the computer
-        </h3>
-      </div>
-      <p>
-        It usually involves programming; like <Link to="/">websites</Link> and <Link to="/">apps</Link>. Sometimes it's also tinkering and
-        soldering; for <Link to="/">interactive installations</Link>.
-      </p>
-      <p>
-        My work style is characterized by experimentation. Using code as a sketching tool, I develop concepts parallel to their technical
-        implementation. I like to technology in a new and unconventional way. godver wat haat ik schrijven!
-      </p>
-      <CollapsibleList label="Some technologies I work with" initiallyOpen={true}>
-        <List>
-          <StyledLi>JavaScript</StyledLi>
-          <StyledLi>TypeScript</StyledLi>
-          <StyledLi>React</StyledLi>
-          <StyledLi>Redux</StyledLi>
-          <StyledLi>Python</StyledLi>
-          <StyledLi>Django</StyledLi>
-        </List>
-      </CollapsibleList>
-    </Container>
-  </Page>
-)
+const I = styled((props: any) => <div {...props} />)``
 
-export default IndexPage
+const HorizontalScrollContainer = styled((props: any) => <div {...props} />)`
+  overflow-x: auto;
+`
+
+type LuukPageProps = {
+  data: any
+}
+
+const LuukPage: FunctionComponent<LuukPageProps> = ({ data }) => {
+  console.log(data)
+  return <Page />
+}
+
+export default LuukPage
+
+export const query = graphql`
+  query {
+    luuk: file(relativePath: { eq: "assets/images/luuk.png" }) {
+      childImageSharp {
+        fixed(width: 28, height: 28) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+  }
+`

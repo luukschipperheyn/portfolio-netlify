@@ -1,114 +1,102 @@
-import styled from '@emotion/styled'
-import { Link, StaticQuery, graphql } from 'gatsby'
-import * as React from 'react'
-import { colors, breakpoints } from '../styles/variables'
-import CollapsibleList from './CollapsibleList'
-import Container from './Container'
-import { ClassNames, css } from '@emotion/core'
-import List from './List'
+import React, { FunctionComponent } from 'react'
+import Page from '../components/Page'
+import CollapsibleList from '../components/CollapsibleList'
+import styled from '@emotion/styled-base'
+import css from '@emotion/css'
+import { StaticQuery, graphql, Link } from 'gatsby'
+import Img from 'gatsby-image/withIEPolyfill'
+import { colors } from '../styles/colors'
+import { uiColors } from '../styles/variables'
 
-const StyledMenu = styled.aside`
-  padding: 16px;
-  background-color: ${colors.darkerGrey};
-  color: ${colors.white};
+const CL = styled(CollapsibleList)`
+  display: inline;
+  margin-left: 0.1rem;
+  ul {
+    display: inline;
+  }
+`
+const StyledImg = styled(Img)`
+  position: relative;
+  top: 0.25rem;
 `
 
-const MenuInner = (props: any) => (
-  <Container
-    css={css`
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      height: 100%;
-      @media screen and (max-width: ${breakpoints.md}px) {
-        display: ${props.open ? 'flex' : 'none'};
-      }
-    `}
+const StyledLink = (props: any) => (
+  <Link
+    activeStyle={{
+      background: uiColors.active.background,
+      color: uiColors.active.text
+    }}
     {...props}
   />
 )
 
-const MenuToggle = styled.span`
-  display: none;
-  background: ${colors.white};
-  color: ${colors.black};
-  @media screen and (max-width: ${breakpoints.md}px) {
-    display: inline-block;
-  }
+const I = styled((props: any) => <div {...props} />)``
+
+const HorizontalScrollContainer = styled((props: any) => <div {...props} />)`
+  overflow-x: auto;
 `
 
-const StyledLi = styled.li``
-
-const MenuLink = (props: any) => (
-  <ClassNames>
-    {({ css, cx }) => (
-      <Link
-        activeClassName={css`
-          background: ${colors.green};
-          color: ${colors.black};
-        `}
-        {...props}
-      />
-    )}
-  </ClassNames>
-)
-type Props = {
-  className?: string
+type MenuProps = {
+  data: any
 }
 
-interface StaticQueryProps {
-  allProjectsJson: {
-    edges: [
-      {
-        node: {
-          title: string
-          fields: {
-            slug: string
-          }
-        }
-      }
-    ]
-  }
+const Menu: FunctionComponent<MenuProps> = data => {
+  return (
+    <Page
+      css={css`
+        border-right: 1px solid ${colors.grey};
+      `}
+    >
+      <HorizontalScrollContainer css={css``}>
+        Hi, I'm{' '}
+        <CL label="Luuk" hint={true}>
+          , A{' '}
+          <CL label="guy">
+            {' '}
+            ( <StyledImg fixed={data.luuk.childImageSharp.fixed} /> )
+          </CL>{' '}
+          who makes{' '}
+          <CL label="stuff">
+            {' '}
+            - like{' '}
+            <CL label="websites">
+              , such as <StyledLink to="/projects/apartheid-revisited/">Apartheid Revisited</StyledLink>
+            </CL>
+            ,{' '}
+            <CL label="apps">
+              , like <StyledLink to="/projects/openr/">Openr</StyledLink>
+            </CL>{' '}
+            and{' '}
+            <CL label="interactive installations">
+              , like <StyledLink to="/projects/mgnt/">MGNT</StyledLink>
+            </CL>{' '}
+            -
+          </CL>{' '}
+          on his computer. Usually by doing some kind of{' '}
+          <CL label="programming">
+            , using various technologies, like JavaScript, TypeScript, React, Redux, React Native, Vue, NodeJS, Python, Django, Java,
+            Android, Arduino, Max/MSP and Supercollider
+          </CL>
+          . You can reach me at <a href="mailto:luukschipperheyn@gmail.com">luukschipperheyn@gmail.com</a>
+        </CL>
+      </HorizontalScrollContainer>
+    </Page>
+  )
 }
 
-const Menu: React.FunctionComponent<Props> = ({ className }) => (
+export default () => (
   <StaticQuery
     query={graphql`
-      {
-        allProjectsJson {
-          edges {
-            node {
-              title
-              fields {
-                slug
-              }
+      query {
+        luuk: file(relativePath: { eq: "assets/images/luuk.png" }) {
+          childImageSharp {
+            fixed(width: 28, height: 28) {
+              ...GatsbyImageSharpFixed
             }
           }
         }
       }
     `}
-    render={(data: StaticQueryProps) => {
-      const [open, setOpen] = React.useState(false)
-      return (
-        <StyledMenu className={className}>
-          <MenuToggle onClick={() => setOpen(!open)}>{open ? 'close' : 'menu'}</MenuToggle>
-          <MenuInner open={open}>
-            <CollapsibleList label="work" initiallyOpen={true}>
-              <List>
-                {data.allProjectsJson.edges.map((edge, i) => (
-                  <StyledLi key={`menu-project-${i}`}>
-                    <MenuLink to={edge.node.fields.slug}>{edge.node.title}</MenuLink>
-                  </StyledLi>
-                ))}
-              </List>
-            </CollapsibleList>
-            {/* <MenuLink to="/">about</MenuLink> */}
-            <MenuLink to="/luuk/">about</MenuLink>
-          </MenuInner>
-        </StyledMenu>
-      )
-    }}
+    render={Menu}
   />
 )
-
-export default Menu

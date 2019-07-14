@@ -1,6 +1,6 @@
 ---
 layout: project
-title: 'Had ik toen maar een huis gekocht'
+title: 'MGNT'
 ---
 
 bla bla bla
