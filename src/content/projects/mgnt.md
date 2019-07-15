@@ -7,6 +7,6 @@ bla bla bla
 
 img
 
-![Screenshot](screenshot.png)
+![Screenshot](mgnt.jpg)
 
 wat

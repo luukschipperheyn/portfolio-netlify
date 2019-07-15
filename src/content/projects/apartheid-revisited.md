@@ -8,6 +8,6 @@ bla bla bla
 
 img
 
-![Screenshot](screenshot.png)
+![Screenshot](apartheid-revisited.png)
 
 wat
