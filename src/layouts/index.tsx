@@ -96,7 +96,7 @@ type Props = {
 }
 
 const IndexLayout: React.FC<Props> = ({ children, location }) => {
-  const { pathname } = location
+  const pathname = location ? location.pathname : '/'
   const [menuOpen, setMenuOpen] = React.useState(pathname === '/')
   React.useEffect(() => {
     console.log('yo', pathname)
