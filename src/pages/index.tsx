@@ -18,18 +18,11 @@ const StyledImg = styled(Img)`
   top: 0.25rem;
 `
 
-const I = styled((props: any) => <div {...props} />)``
-
-const HorizontalScrollContainer = styled((props: any) => <div {...props} />)`
-  overflow-x: auto;
-`
-
 type LuukPageProps = {
   data: any
 }
 
 const LuukPage: FunctionComponent<LuukPageProps> = ({ data }) => {
-  console.log(data)
   return <Page />
 }
 
