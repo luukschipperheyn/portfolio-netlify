@@ -29,7 +29,7 @@ export default `
   }
 
   a {
-    color: ${colors.green};
+    color: ${colors.purple};
     text-decoration: none;
 
     &:hover,
