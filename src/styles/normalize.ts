@@ -4,6 +4,7 @@ import { getEmSize } from './mixins'
 export default `
   html {
     box-sizing: border-box;
+    overflow: hidden;
   }
 
   *,
@@ -20,7 +21,7 @@ export default `
   body {
     width: 100%;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: hidden;
     font-family: ${fonts.monospace};
     color: ${colors.black};
     background-color: ${colors.white};

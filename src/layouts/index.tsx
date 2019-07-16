@@ -1,20 +1,17 @@
+import css from '@emotion/css'
+import styled from '@emotion/styled'
+import { graphql, StaticQuery } from 'gatsby'
+import { LocationState } from 'history'
+import 'modern-normalize'
 import * as React from 'react'
 import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
-
-import 'modern-normalize'
-import '../styles/normalize'
-
-import LayoutRoot from '../components/LayoutRoot'
-import LayoutMain from '../components/LayoutMain'
-import Menu from '../components/Menu'
-import styled from '@emotion/styled'
-import { colors } from '../styles/colors'
-import { Location, LocationProps } from '@reach/router'
-import { LocationState } from 'history'
-import { breakpoints } from '../styles/variables'
-import css from '@emotion/css'
 import MdMenu from 'react-ionicons/lib/MdMenu'
+import LayoutMain from '../components/LayoutMain'
+import LayoutRoot from '../components/LayoutRoot'
+import Menu from '../components/Menu'
+import { colors } from '../styles/colors'
+import '../styles/normalize'
+import { breakpoints } from '../styles/variables'
 
 interface StaticQueryProps {
   site: {
@@ -29,10 +26,11 @@ interface StaticQueryProps {
 const Container = ({ menuOpen, ...props }: any) => (
   <div
     css={css`
-      max-width: 1200px;
+      /* max-width: 1200px; */
       width: 100%;
       margin: 0 auto;
       display: flex;
+      justify-content: center;
       word-wrap: break-word;
       word-break: break-word;
       height: 100%;
@@ -60,36 +58,49 @@ const StyledMdMenu = ({ show, ...props }: any) => (
         opacity: ${show ? 1 : 0};
         transition: opacity 0.4s ease-in-out;
         box-sizing: content-box;
+        cursor: pointer;
       }
     `}
     {...props}
   />
 )
 
-const MenuContainer = styled.div`
-  flex: 1;
+const ScrollContainer = ({ pointer, ...props }: any) => (
+  <div
+    css={css`
+      flex: 1;
+      overflow-y: auto;
+      height: 100%;
+      display: flex;
+      cursor: ${pointer};
+    `}
+    {...props}
+  />
+)
+
+const MenuScrollContainer = styled(ScrollContainer)`
+  justify-content: flex-end;
   border-right: 1px solid ${colors.grey};
-  overflow-y: auto;
-  height: 100%;
+`
+
+const InnerContainer = styled.div`
   position: relative;
+  width: 100%;
+  max-width: 600px;
 `
 
 const StyledMenu = ({ show, ...props }: any) => (
   <Menu
     css={css`
       position: relative;
-      left: ${show ? 0 : '-64px'};
-      transition: left 0.6s ease-in-out;
+      @media screen and (max-width: ${breakpoints.md}px) {
+        left: ${show ? 0 : '-64px'};
+        transition: left 0.6s ease-in-out;
+      }
     `}
     {...props}
   />
 )
-
-const PageContainer = styled.div`
-  flex: 1;
-  height: 100%;
-  overflow-y: auto;
-`
 
 type Props = {
   location: LocationState
@@ -98,10 +109,7 @@ type Props = {
 const IndexLayout: React.FC<Props> = ({ children, location }) => {
   const pathname = location ? location.pathname : '/'
   const [menuOpen, setMenuOpen] = React.useState(pathname === '/')
-  React.useEffect(() => {
-    console.log('yo', pathname)
-    setMenuOpen(pathname === '/')
-  }, [pathname])
+  React.useEffect(() => setMenuOpen(pathname === '/'), [pathname])
   return (
     <StaticQuery
       query={graphql`
@@ -132,19 +140,31 @@ const IndexLayout: React.FC<Props> = ({ children, location }) => {
               <meta name="msapplication-TileColor" content={colors.pink} />
               <meta name="theme-color" content={colors.pink}></meta>
             </Helmet>
-            <MenuContainer onClick={() => setMenuOpen(true)}>
-              <StyledMdMenu color={colors.white} show={!menuOpen} />
-              <StyledMenu
-                show={menuOpen}
-                onClickLink={(e: React.SyntheticEvent) => {
-                  setMenuOpen(false)
-                  e.stopPropagation()
-                }}
-              />
-            </MenuContainer>
-            <PageContainer onClick={() => setMenuOpen(false)}>
-              <LayoutMain>{children}</LayoutMain>
-            </PageContainer>
+            <MenuScrollContainer
+              css={css`
+                cursor: ${menuOpen ? 'auto' : 'pointer'};
+              `}
+            >
+              <InnerContainer onClick={() => setMenuOpen(true)}>
+                <StyledMdMenu color={colors.white} show={!menuOpen} />
+                <StyledMenu
+                  show={menuOpen}
+                  onClickLink={(e: React.SyntheticEvent) => {
+                    setMenuOpen(false)
+                    e.stopPropagation()
+                  }}
+                />
+              </InnerContainer>
+            </MenuScrollContainer>
+            <ScrollContainer
+              css={css`
+                cursor: ${!menuOpen ? 'auto' : 'pointer'};
+              `}
+            >
+              <InnerContainer onClick={() => setMenuOpen(false)}>
+                <LayoutMain>{children}</LayoutMain>
+              </InnerContainer>
+            </ScrollContainer>
           </Container>
         </LayoutRoot>
       )}
