@@ -23,7 +23,7 @@ type Props = {
   label: string
   initiallyOpen?: boolean
   hint?: boolean
-  abslute?: boolean
+  absolute?: boolean
 }
 
 const CollapsibleList: React.FunctionComponent<Props> = ({
