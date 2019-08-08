@@ -37,9 +37,9 @@ export const colors = {
 }
 
 export const uiColors = {
-  active: { background: colors.darkBlue, text: colors.white },
+  active: { background: colors.lightBlue, text: colors.black },
   expandable: { background: colors.pink, text: colors.black },
-  collapsible: { background: colors.yellow, text: colors.black }
+  collapsible: { background: colors.green, text: colors.white }
 }
 
 export const fonts = {
