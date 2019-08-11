@@ -72,7 +72,9 @@ const ScrollContainer = ({ pointer, ...props }: any) => (
       overflow-y: auto;
       height: 100%;
       display: flex;
-      cursor: ${pointer};
+      @media screen and (max-width: ${breakpoints.md}px) {
+        cursor: ${pointer};
+      }
     `}
     {...props}
   />
@@ -142,7 +144,9 @@ const IndexLayout: React.FC<Props> = ({ children, location }) => {
             </Helmet>
             <MenuScrollContainer
               css={css`
-                cursor: ${menuOpen ? 'auto' : 'pointer'};
+                @media screen and (max-width: ${breakpoints.md}px) {
+                  cursor: ${menuOpen ? 'auto' : 'pointer'};
+                }
               `}
             >
               <InnerContainer onClick={() => setMenuOpen(true)}>
@@ -158,7 +162,9 @@ const IndexLayout: React.FC<Props> = ({ children, location }) => {
             </MenuScrollContainer>
             <ScrollContainer
               css={css`
-                cursor: ${!menuOpen ? 'auto' : 'pointer'};
+                @media screen and (max-width: ${breakpoints.md}px) {
+                  cursor: ${!menuOpen ? 'auto' : 'pointer'};
+                }
               `}
             >
               <InnerContainer onClick={() => setMenuOpen(false)}>
