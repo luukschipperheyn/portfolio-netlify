@@ -1,12 +1,22 @@
-import React, { FunctionComponent } from 'react'
-import Page from '../components/Page'
-import CollapsibleList from '../components/CollapsibleList'
 import styled from '@emotion/styled-base'
-import css from '@emotion/css'
-import { StaticQuery, graphql, Link } from 'gatsby'
+import { graphql, Link, StaticQuery } from 'gatsby'
 import Img from 'gatsby-image/withIEPolyfill'
-import { colors } from '../styles/colors'
+import React, { FunctionComponent, useEffect, useState } from 'react'
+import CollapsibleList from '../components/CollapsibleList'
+import Page from '../components/Page'
 import { uiColors } from '../styles/variables'
+import { useDebouncedCallback } from 'use-debounce'
+import css from '@emotion/css'
+
+const StyledImg = styled(Img)`
+  position: relative;
+  top: 0.25rem;
+`
+
+type MenuProps = {
+  data: any
+  onClickLink: () => void
+}
 
 const CL = styled(CollapsibleList)`
   display: inline;
@@ -15,31 +25,38 @@ const CL = styled(CollapsibleList)`
     display: inline;
   }
 `
-const StyledImg = styled(Img)`
-  position: relative;
-  top: 0.25rem;
-`
-
-const HorizontalScrollContainer = styled((props: any) => <div {...props} />)`
-  overflow-x: auto;
-`
-
-type MenuProps = {
-  data: any
-  onClickLink: () => void
-}
 
 const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => {
+  const [showHints, setShowHints] = useState(false)
+  const [debouncedShowHints] = useDebouncedCallback(() => {
+    setShowHints(true)
+  }, 10000)
+  const [initialDebouncedShowHints] = useDebouncedCallback(() => {
+    setShowHints(true)
+  }, 2000)
+  useEffect(() => initialDebouncedShowHints(), [])
   const StyledLink = (props: any) => (
     <Link
       activeStyle={{
         background: uiColors.active.background,
         color: uiColors.active.text
       }}
+      css={css`
+        background: ${uiColors.link.background};
+        color: ${uiColors.link.text};
+      `}
       onClick={onClickLink}
       {...props}
     />
   )
+  const [listsOpened, setListsOpened] = useState(0)
+  const handleListOpen = () => {
+    setListsOpened(listsOpened + 1)
+    setShowHints(false)
+    if (listsOpened < 2) {
+      debouncedShowHints()
+    }
+  }
   return (
     <StaticQuery
       query={graphql`
@@ -56,39 +73,37 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
       render={data => {
         return (
           <Page {...props}>
-            <HorizontalScrollContainer css={css``}>
-              Hi, I'm{' '}
-              <CL label="Luuk" hint={true}>
-                , A{' '}
-                <CL label="guy">
-                  {' '}
-                  ( <StyledImg fixed={data.luuk.childImageSharp.fixed} /> )
-                </CL>{' '}
-                who makes{' '}
-                <CL label="stuff">
-                  {' '}
-                  - like{' '}
-                  <CL label="websites">
-                    , such as <StyledLink to="/projects/apartheid-revisited/">Apartheid Revisited</StyledLink>
-                  </CL>
-                  ,{' '}
-                  <CL label="apps">
-                    , like <StyledLink to="/projects/openr/">Openr</StyledLink>
-                  </CL>{' '}
-                  and{' '}
-                  <CL label="interactive installations">
-                    , like <StyledLink to="/projects/mgnt/">MGNT</StyledLink>
-                  </CL>{' '}
-                  -
-                </CL>{' '}
-                on his computer. Usually by doing some kind of{' '}
-                <CL label="programming">
-                  , using various technologies, like JavaScript, TypeScript, React, Redux, React Native, Vue, NodeJS, Python, Django, Java,
-                  Android, Arduino, Max/MSP and Supercollider
+            Hi, I'm{' '}
+            <CL showHint={showHints} onOpen={handleListOpen} label="Luuk">
+              , A{' '}
+              <CL showHint={showHints} onOpen={handleListOpen} label="guy">
+                {' '}
+                ( <StyledImg fixed={data.luuk.childImageSharp.fixed} /> )
+              </CL>{' '}
+              who makes{' '}
+              <CL showHint={showHints} onOpen={handleListOpen} label="stuff">
+                {' '}
+                - like{' '}
+                <CL showHint={showHints} onOpen={handleListOpen} label="websites">
+                  , such as <StyledLink to="/projects/apartheid-revisited/">Apartheid Revisited</StyledLink>
                 </CL>
-                . You can reach me at <a href="mailto:luukschipperheyn@gmail.com">luukschipperheyn@gmail.com</a>
+                ,{' '}
+                <CL showHint={showHints} onOpen={handleListOpen} label="apps">
+                  , like <StyledLink to="/projects/openr/">Openr</StyledLink>
+                </CL>{' '}
+                and{' '}
+                <CL showHint={showHints} onOpen={handleListOpen} label="interactive installations">
+                  , like <StyledLink to="/projects/mgnt/">MGNT</StyledLink>
+                </CL>{' '}
+                -
+              </CL>{' '}
+              on his computer. Usually by doing some kind of{' '}
+              <CL showHint={showHints} onOpen={handleListOpen} label="programming">
+                , using JavaScript, TypeScript, React, Redux, React Native, Vue, NodeJS, Python, Django, Java, Android, Arduino, Max/MSP and
+                Supercollider
               </CL>
-            </HorizontalScrollContainer>
+              . You can reach me at <a href="mailto:luukschipperheyn@gmail.com">luukschipperheyn@gmail.com</a>
+            </CL>
           </Page>
         )
       }}

@@ -1,4 +1,4 @@
-import { dimensions, fonts, colors, breakpoints } from './variables'
+import { dimensions, fonts, colors, breakpoints, uiColors } from './variables'
 import { getEmSize } from './mixins'
 
 export default `
@@ -30,8 +30,9 @@ export default `
   }
 
   a {
-    color: ${colors.purple};
-    text-decoration: none;
+    color: ${uiColors.link.text};
+    background: ${uiColors.link.background};
+    // text-decoration: none;
 
     &:hover,
     &:focus {
