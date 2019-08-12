@@ -30,22 +30,26 @@ const CL = styled(CollapsibleList)`
 const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => {
   const [showHints, setShowHints] = useState(false)
   const [listsOpened, setListsOpened] = useState(0)
-  const [debouncedShowHints] = useDebouncedCallback(() => {
-    if (listsOpened < 2) {
-      setShowHints(true)
-    }
-  }, 10000)
-  useEffect(() => {
-    const showHintsTimeout = setTimeout(() => {
-      if (listsOpened < 1) {
-        setShowHints(true)
-      }
-    }, 5000)
-    return () => clearTimeout(showHintsTimeout)
-  }, [])
   useEffect(() => {
     setShowHints(false)
-    debouncedShowHints()
+    let showHintsTimeout: null | NodeJS.Timeout = null
+    if (listsOpened < 1) {
+      showHintsTimeout = setTimeout(() => {
+        if (listsOpened < 1) {
+          setShowHints(true)
+        }
+      }, 5000)
+    }
+    if (listsOpened === 1) {
+      showHintsTimeout = setTimeout(() => {
+        if (listsOpened < 2) {
+          setShowHints(true)
+        }
+      }, 10000)
+    }
+    return () => {
+      if (showHintsTimeout) clearTimeout(showHintsTimeout)
+    }
   }, [listsOpened])
   const StyledLink = (props: any) => (
     <Link
