@@ -7,7 +7,7 @@ clients: [{ name: 'STRP', url: 'http://strp.nl' }]
 
 ![Screenshot](mgnt.jpg)
 
-MGNT is an interactive audio-visual installation paying hommage to the pioneers of electronic music. Spanning 10 metres, it is a giant version of a tape loop that allows visitors to interact using their bodies and their environment through movement and sound.
+MGNT is an interactive audio-visual installation paying hommage to the pioneers of electronic music. Spanning 10 metres, it is a giant version of a tape loop that visitors can interacts with, using their bodies and the environment through movement and sound.
 
 <iframe src="https://player.vimeo.com/video/223058564?title=0&amp;byline=0&amp;portrait=0&amp;color=000000&amp;muted=1&amp;autoplay=1&amp;autopause=0&amp;loop=1&amp;background=1&amp;app_id=122963" width="1920" height="1080" frameborder="0" title="MGNT@STRP" allow="autoplay" allowfullscreen="" data-ready="true" class="video_embed" id="video_402"></iframe>
 
