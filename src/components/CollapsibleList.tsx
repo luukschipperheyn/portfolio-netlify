@@ -39,7 +39,7 @@ const Hint = styled.div`
   pointer-events: none;
   z-index: 1;
   ::after {
-    content: 'click me';
+    content: 'unfold';
     text-align: center;
     font-size: 11px;
     position: absolute;

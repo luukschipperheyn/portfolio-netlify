@@ -28,13 +28,26 @@ const CL = styled(CollapsibleList)`
 
 const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => {
   const [showHints, setShowHints] = useState(false)
+  const [listsOpened, setListsOpened] = useState(0)
   const [debouncedShowHints] = useDebouncedCallback(() => {
-    setShowHints(true)
+    if (listsOpened < 3) {
+      setShowHints(true)
+    }
   }, 10000)
-  const [initialDebouncedShowHints] = useDebouncedCallback(() => {
-    setShowHints(true)
-  }, 2000)
-  useEffect(() => initialDebouncedShowHints(), [])
+  useEffect(() => {
+    const showHintsTimeout = setTimeout(() => {
+      if (listsOpened < 1) {
+        setShowHints(true)
+      }
+    }, 2000)
+    return () => clearTimeout(showHintsTimeout)
+  }, [])
+  useEffect(() => {
+    setShowHints(false)
+    if (listsOpened < 2) {
+      debouncedShowHints()
+    }
+  }, [listsOpened])
   const StyledLink = (props: any) => (
     <Link
       activeStyle={{
@@ -49,13 +62,8 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
       {...props}
     />
   )
-  const [listsOpened, setListsOpened] = useState(0)
   const handleListOpen = () => {
     setListsOpened(listsOpened + 1)
-    setShowHints(false)
-    if (listsOpened < 2) {
-      debouncedShowHints()
-    }
   }
   return (
     <StaticQuery
@@ -63,7 +71,7 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
         query {
           luuk: file(relativePath: { eq: "assets/images/luuk.png" }) {
             childImageSharp {
-              fixed(width: 28, height: 28) {
+              fixed(width: 20, height: 20) {
                 ...GatsbyImageSharpFixed
               }
             }
@@ -73,7 +81,7 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
       render={data => {
         return (
           <Page {...props}>
-            Hi, I'm{' '}
+            {listsOpened} Hi, I'm{' '}
             <CL showHint={showHints} onOpen={handleListOpen} label="Luuk">
               , A{' '}
               <CL showHint={showHints} onOpen={handleListOpen} label="guy">
@@ -99,8 +107,8 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
               </CL>{' '}
               on his computer. Usually by doing some kind of{' '}
               <CL showHint={showHints} onOpen={handleListOpen} label="programming">
-                , using JavaScript, TypeScript, React, Redux, React Native, Vue, NodeJS, Python, Django, Java, Android, Arduino, Max/MSP and
-                Supercollider
+                , using JavaScript, TypeScript, React, Redux, React Native, Vue, NodeJS, Python, Django, Java, Android, Arduino, Particle,
+                Max/MSP and Supercollider
               </CL>
               . You can reach me at <a href="mailto:luukschipperheyn@gmail.com">luukschipperheyn@gmail.com</a>
             </CL>
