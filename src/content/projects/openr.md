@@ -7,7 +7,7 @@ clients: [{ name: 'Openr', url: 'http://get.openr.nl' }]
 
 ![Screenshot](openr.jpg)
 
-Openr is a service for access control and intercom. The touch screen intercom enables your guests to call you and the app allows you to open the door, no matter if you are in the building or not.
+Openr is an intercom and access control service. The touch screen intercom enables your guests to call you and the app allows you to open the door, no matter if you are in the building or not.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/2nc6BnDJeOo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
