@@ -11,6 +11,7 @@ import css from '@emotion/css'
 const StyledImg = styled(Img)`
   position: relative;
   top: 0.25rem;
+  margin-top: -12px;
 `
 
 type MenuProps = {
@@ -30,7 +31,7 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
   const [showHints, setShowHints] = useState(false)
   const [listsOpened, setListsOpened] = useState(0)
   const [debouncedShowHints] = useDebouncedCallback(() => {
-    if (listsOpened < 3) {
+    if (listsOpened < 2) {
       setShowHints(true)
     }
   }, 10000)
@@ -39,14 +40,12 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
       if (listsOpened < 1) {
         setShowHints(true)
       }
-    }, 2000)
+    }, 5000)
     return () => clearTimeout(showHintsTimeout)
   }, [])
   useEffect(() => {
     setShowHints(false)
-    if (listsOpened < 2) {
-      debouncedShowHints()
-    }
+    debouncedShowHints()
   }, [listsOpened])
   const StyledLink = (props: any) => (
     <Link
@@ -71,7 +70,7 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
         query {
           luuk: file(relativePath: { eq: "assets/images/luuk.png" }) {
             childImageSharp {
-              fixed(width: 20, height: 20) {
+              fixed(width: 28, height: 28) {
                 ...GatsbyImageSharpFixed
               }
             }
@@ -81,7 +80,7 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
       render={data => {
         return (
           <Page {...props}>
-            {listsOpened} Hi, I'm{' '}
+            Hi, I'm{' '}
             <CL showHint={showHints} onOpen={handleListOpen} label="Luuk">
               , A{' '}
               <CL showHint={showHints} onOpen={handleListOpen} label="guy">

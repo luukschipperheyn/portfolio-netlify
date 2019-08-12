@@ -36,7 +36,8 @@ export default `
 
     &:hover,
     &:focus {
-      text-decoration: underline;
+      background: ${uiColors.hoveredLink.background};
+      color: ${uiColors.hoveredLink.text};
     }
   }
 
