@@ -122,4 +122,6 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
   )
 }
 
-export default Menu
+// export default Menu
+
+export default () => <Page />

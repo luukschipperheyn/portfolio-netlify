@@ -69,7 +69,9 @@ const LuukPage: FunctionComponent<LuukPageProps> = ({ data }) => {
   )
 }
 
-export default LuukPage
+// export default LuukPage
+
+export default () => <Page></Page>
 
 export const query = graphql`
   query {
