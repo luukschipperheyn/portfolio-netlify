@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { keyframes, css } from '@emotion/core'
+import { keyframes, css } from '@emotion/react'
 import * as React from 'react'
 import { uiColors, colors } from '../styles/variables'
 
@@ -70,10 +70,10 @@ type Props = {
   initiallyOpen?: boolean
   showHint?: boolean
   absolute?: boolean
-  onOpen: () => void
+  onOpen?: () => void
 }
 
-const CollapsibleList: React.FunctionComponent<Props> = ({
+const CollapsibleList: React.FunctionComponent<Props & React.PropsWithChildren> = ({
   className,
   label,
   children,
@@ -90,7 +90,7 @@ const CollapsibleList: React.FunctionComponent<Props> = ({
         open={open}
         onClick={() => {
           setOpen(!open)
-          onOpen()
+          onOpen && onOpen()
           setHasBeenOpened(true)
         }}
       >

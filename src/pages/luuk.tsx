@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from 'react'
-import Page from '../components/Page'
-import CollapsibleList from '../components/CollapsibleList'
-import styled from '@emotion/styled-base'
-import css from '@emotion/css'
-import { StaticQuery, graphql, Link } from 'gatsby'
+import { css } from '@emotion/react'
+import styled from '@emotion/styled'
+import { Link, graphql } from 'gatsby'
 import Img from 'gatsby-image/withIEPolyfill'
+import { FunctionComponent } from 'react'
+import CollapsibleList from '../components/CollapsibleList'
+import Page from '../components/Page'
 
 const CL = styled(CollapsibleList)`
   display: inline;

@@ -1,4 +1,4 @@
-import styled from '@emotion/styled-base'
+import styled from '@emotion/styled'
 import { graphql, Link, StaticQuery } from 'gatsby'
 import Img from 'gatsby-image/withIEPolyfill'
 import React, { FunctionComponent, useEffect, useState } from 'react'
@@ -6,7 +6,7 @@ import CollapsibleList from '../components/CollapsibleList'
 import Page from '../components/Page'
 import { uiColors } from '../styles/variables'
 import { useDebouncedCallback } from 'use-debounce'
-import css from '@emotion/css'
+import { css } from '@emotion/react'
 
 const StyledImg = styled(Img)`
   position: relative;

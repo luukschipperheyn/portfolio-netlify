@@ -1,17 +1,18 @@
-import css from '@emotion/css'
 import styled from '@emotion/styled'
 import { graphql, StaticQuery } from 'gatsby'
-import { LocationState } from 'history'
+// import { LocationState } from 'history'
 import 'modern-normalize'
 import * as React from 'react'
 import Helmet from 'react-helmet'
-import MdMenu from 'react-ionicons/lib/MdMenu'
+import MdMenu from 'react-ionicons/lib/Menu'
 import LayoutMain from '../components/LayoutMain'
 import LayoutRoot from '../components/LayoutRoot'
 import Menu from '../components/Menu'
 import { colors } from '../styles/colors'
 import '../styles/normalize'
 import { breakpoints } from '../styles/variables'
+import { HLocation, Location, LocationProps } from '@reach/router'
+import { css } from '@emotion/react'
 
 interface StaticQueryProps {
   site: {
@@ -105,10 +106,10 @@ const StyledMenu = ({ show, ...props }: any) => (
 )
 
 type Props = {
-  location: LocationState
+  location: HLocation
 }
 
-const IndexLayout: React.FC<Props> = ({ children, location }) => {
+const IndexLayout: React.FC<Props & React.PropsWithChildren> = ({ children, location }) => {
   const pathname = location ? location.pathname : '/'
   const [menuOpen, setMenuOpen] = React.useState(pathname === '/')
   React.useEffect(() => setMenuOpen(pathname === '/'), [pathname])
