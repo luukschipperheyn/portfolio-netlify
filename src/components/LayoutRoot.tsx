@@ -17,6 +17,10 @@ const StyledLayoutRoot = styled.div`
     background: none;
     color: ${colors.white};
   }
+  strong {
+    background: ${colors.lightGrey};
+    color: ${colors.darkGrey};
+  }
 `
 
 interface LayoutRootProps {

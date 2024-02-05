@@ -19,38 +19,30 @@ type MenuProps = {
   onClickLink: () => void
 }
 
-const CL = styled(CollapsibleList)`
-  display: inline;
-  margin-left: 0.1rem;
-  ul {
-    display: inline;
+const StyledLi = styled.li`
+  position: relative;
+  padding-left:1.3rem;
+  bottom: -0.5rem;
+  :before {
+    position: absolute;
+    bottom: 0.5rem;
+    left:0;
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    height: 1px;
+    margin-right: 5px;
+    border-bottom: 1px solid white;
   }
+`
+const StyledUl = styled.ul`
+  margin-left: 0.5rem;
+  border-left: 1px solid white;
+  padding: 0;
+  margin-bottom: 0.5rem;
 `
 
 const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => {
-  const [showHints, setShowHints] = useState(false)
-  const [listsOpened, setListsOpened] = useState(0)
-  useEffect(() => {
-    setShowHints(false)
-    let showHintsTimeout: null | NodeJS.Timeout = null
-    if (listsOpened < 1) {
-      showHintsTimeout = setTimeout(() => {
-        if (listsOpened < 1) {
-          setShowHints(true)
-        }
-      }, 5000)
-    }
-    if (listsOpened === 1) {
-      showHintsTimeout = setTimeout(() => {
-        if (listsOpened < 2) {
-          setShowHints(true)
-        }
-      }, 10000)
-    }
-    return () => {
-      if (showHintsTimeout) clearTimeout(showHintsTimeout)
-    }
-  }, [listsOpened])
   const StyledLink = (props: any) => (
     <Link
       activeStyle={{
@@ -65,9 +57,6 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
       {...props}
     />
   )
-  const handleListOpen = () => {
-    setListsOpened(listsOpened + 1)
-  }
   return (
     <StaticQuery
       query={graphql`
@@ -84,37 +73,27 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
       render={data => {
         return (
           <Page {...props}>
-            Hi, I'm{' '}
-            <CL showHint={showHints} onOpen={handleListOpen} label="Luuk">
-              , A{' '}
-              <CL showHint={showHints} onOpen={handleListOpen} label="guy">
-                {' '}
-                ( <StyledImg fixed={data.luuk.childImageSharp.fixed} /> )
-              </CL>{' '}
-              who makes{' '}
-              <CL showHint={showHints} onOpen={handleListOpen} label="stuff">
-                {' '}
-                - like{' '}
-                <CL showHint={showHints} onOpen={handleListOpen} label="websites">
-                  , such as <StyledLink to="/projects/apartheid-revisited/">Apartheid Revisited</StyledLink>
-                </CL>
-                ,{' '}
-                <CL showHint={showHints} onOpen={handleListOpen} label="apps">
-                  , like <StyledLink to="/projects/openr/">Openr</StyledLink>
-                </CL>{' '}
-                and{' '}
-                <CL showHint={showHints} onOpen={handleListOpen} label="interactive installations">
-                  , like <StyledLink to="/projects/mgnt/">MGNT</StyledLink>
-                </CL>{' '}
-                -
-              </CL>{' '}
-              on his computer. Usually by doing some kind of{' '}
-              <CL showHint={showHints} onOpen={handleListOpen} label="programming">
-                , using JavaScript, TypeScript, React, Redux, React Native, Vue, NodeJS, Python, Django, Java, Android, Arduino, Particle,
-                Max/MSP and Supercollider
-              </CL>
-              . You can reach me at <a href="mailto:luukschipperheyn@gmail.com">luukschipperheyn@gmail.com</a>
-            </CL>
+            <div><StyledImg fixed={data.luuk.childImageSharp.fixed} /></div>
+            <div>
+              This is the portfolio of Luuk Schipperheijn, Rotterdam-based creative developer.
+            </div>
+            <div>
+              <CollapsibleList label="work">
+                <StyledUl>
+                  <StyledLi><StyledLink to="/projects/internew/">the internew</StyledLink></StyledLi>
+                  <StyledLi><StyledLink to="/projects/apartheid-revisited/">apartheid revisited</StyledLink></StyledLi>
+                  <StyledLi><StyledLink to="/projects/seev/">seev</StyledLink></StyledLi>
+                  <StyledLi><StyledLink to="/projects/goudenkoets/">goudenkoets.nl</StyledLink></StyledLi>
+                  <StyledLi><StyledLink to="/projects/modular-covert-camera/">modular covert camera</StyledLink></StyledLi>
+                  <StyledLi><StyledLink to="/projects/nike-manifesto-wall/">nike manifesto wall</StyledLink></StyledLi>
+                  <StyledLi><StyledLink to="/projects/touch-me-please/">touch me please</StyledLink></StyledLi>
+                  <StyledLi><StyledLink to="/projects/mgnt/">mgnt</StyledLink></StyledLi>
+                  <StyledLi><StyledLink to="/projects/openr/">openr</StyledLink></StyledLi>
+                </StyledUl>
+              </CollapsibleList>
+              <StyledLink to="/about">about</StyledLink>
+            </div>
+
           </Page>
         )
       }}

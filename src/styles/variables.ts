@@ -38,10 +38,10 @@ export const colors = {
 
 export const uiColors = {
   active: { background: colors.lightBlue, text: colors.black },
-  link: { background: colors.white, text: colors.black },
+  link: { background: colors.black, text: colors.pink },
   hoveredLink: { background: colors.black, text: colors.white },
-  expandable: { background: colors.pink, text: colors.black },
-  collapsible: { background: colors.green, text: colors.white }
+  collapsible: { background: colors.pink, text: colors.black },
+  expandable: { background: colors.green, text: colors.white }
 }
 
 export const fonts = {

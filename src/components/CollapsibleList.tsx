@@ -82,8 +82,8 @@ const CollapsibleList: React.FunctionComponent<Props & React.PropsWithChildren> 
   absolute = false,
   onOpen
 }) => {
-  const [open, setOpen] = React.useState(false)
-  const [hasBeenOpened, setHasBeenOpened] = React.useState(false)
+  const [open, setOpen] = React.useState(initiallyOpen)
+  const [hasBeenOpened, setHasBeenOpened] = React.useState(initiallyOpen)
   return (
     <StyledUl className={className}>
       <Label
@@ -100,7 +100,7 @@ const CollapsibleList: React.FunctionComponent<Props & React.PropsWithChildren> 
         css={css`
           display: ${open ? 'inline' : 'none'};
           ${absolute &&
-            `
+          `
           position: absolute;
           top: 1rem;
           left: 0;
