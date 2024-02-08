@@ -162,6 +162,7 @@ const IndexLayout: React.FC<Props & React.PropsWithChildren> = ({ children, loca
               </InnerContainer>
             </MenuScrollContainer>
             <ScrollContainer
+              className="scroll-container"
               css={css`
                 @media screen and (max-width: ${breakpoints.md}px) {
                   cursor: ${!menuOpen ? 'auto' : 'pointer'};

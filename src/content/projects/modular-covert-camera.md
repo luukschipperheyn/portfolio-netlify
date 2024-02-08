@@ -3,46 +3,14 @@ layout: project
 title: 'Modular Covert Camera'
 slug: modular-covert-camera
 url: 'https://www.frolicstudio.com/portfolio/modular-covert-camera'
-clients: [{ name: 'Frolic Studio', url: 'https://frolicstudio.com' }]
+clients: [{ name: 'FROLIC Studio', url: 'https://frolicstudio.com' }]
+collaborators: [{ name: 'Pim Swinkels', url: 'https://pimswinkels.com' }]
 ---
 
-![Screenshot](./modular-covert-camera.png)
+![Modular Covert Camera Kit](./modular-covert-camera.jpg)
 
-**Development Highlights: Raspberry Pi Integration, Performance Optimization, Web Interface**
+FROLIC studio collaborated with an undisclosed international NGO to develop a Modular Covert Camera, empowering human rights activists to document abuses. In the project's second phase, my role involved Raspberry Pi integration, performance optimization, and crafting a user-friendly web interface for mobile accessibility on a local network.
 
-**Overview:**
-FROLIC studio's collaboration with an undisclosed international NGO led to the development of a Modular Covert Camera. This innovative project aimed to empower human rights activists by enhancing their ability to document and expose abuses in challenging environments. My role in the project's second iteration involved Raspberry Pi integration, performance optimization, and creating a user-friendly web interface on a local network for mobile accessibility.
+![Modular Covert Camera](./modular-covert-camera-2.jpg)
 
-**Client's Mission:**
-The undisclosed NGO supports and trains human rights activists globally, providing them with miniature covert cameras to capture evidence of rights abuses in their communities. The challenge was to address technological limitations, ensuring the safety and confidence of camera operators while maximizing the impact of gathered intelligence.
-
-**Development Process:**
-
-1. **Discovery:**
-    - Conducted comprehensive research to understand diverse operational environments and user experiences.
-    - Explored existing challenges with current technology and gathered insights through user interviews.
-    - Identified the critical need for user trust and confidence in the camera's success.
-2. **Design:**
-    - Guiding question: How to create a sense of safety and confidence for operators?
-    - Brainstormed and defined key criteria: size, modularity, robustness, and ease of use for various technical skill levels.
-    - Developed a covert prototype with modular functionalities, emphasizing versatility for diverse scenarios.
-3. **Development:**
-    - Integrated Raspberry Pi for enhanced performance and functionality.
-    - Optimized performance for seamless use in the field.
-    - Designed and implemented a web interface on a local network, ensuring accessibility via mobile phones.
-    - Conducted field testing for ongoing feedback and improvements.
-
-**Impact:**
-
-- The prototype offers a variety of modules for different hardware features (lenses, microphones), catering to various situational contexts.
-- Enables users with limited technical knowledge to operate the device effectively.
-- Adds a layer of security to both audio and video, safeguarding valuable resources for the NGO.
-- The modular system can adapt to evolving needs, preventing obsolescence with technological advancements.
-
-**Future Collaboration:**
-
-- Ongoing collaboration with the NGO to further refine and develop the modular covert camera.
-- Potential positive impact on raising public awareness and pressuring entities to address human rights issues.
-
-**Conclusion:**
-The Modular Covert Camera project, with its emphasis on innovation and user-centric design, reflects FROLIC studio's commitment to sustainability and social impact. The development efforts contribute to the critical mission of empowering marginalized communities and advancing human rights globally.
+The NGO equips activists with covert cameras to capture evidence of rights abuses. Our challenge was to address technological limitations while ensuring operator safety and confidence. Through research and user interviews, we designed a covert prototype with modular functionalities, integrating Raspberry Pi for enhanced performance. Field testing validated its impact, offering diverse modules catering to various situational contexts and enabling effective operation even for users with limited technical knowledge. Ongoing collaboration aims to refine the camera further, with potential positive impact on public awareness and human rights advocacy.

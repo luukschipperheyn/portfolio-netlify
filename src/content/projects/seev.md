@@ -3,44 +3,16 @@ layout: project
 title: 'Seev'
 slug: seev
 url: 'https://seevapp.nl'
-clients: [{ name: 'Afdeling Buitengewone Zaken', url: 'https://www.afdelingbuitengewonezaken.nl' }]
+clients: [{ name: 'Afdeling Buitengewone Zaken', url: 'https://www.afdelingbuitengewonezaken.nl' }, { name: 'Garage2020', url: 'https://www.garage2020.nl/' }]
+collaborators: [{ name: 'Thijs Koerselman', url: 'https://www.vauxlab.com' }]
 ---
 
-![Screenshot](./seev.png)
+![Seev app](./seev.webp)
 
+Seev is a practical app made to assist young individuals in managing bill payments effectively, speaking their language and addressing their unique experiences. Developed in collaboration with Stichting Enver, Seev stimulates responsible bill payments by encouraging both organizations and young users to play an active role in the payment process.
 
-**Project Description:**
+<iframe src="https://player.vimeo.com/video/631859471?h=c5bdcc9ee8&amp;title=0" width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen class="video_embed"></iframe>
 
-Seev is a practical app crafted to assist young individuals in managing bill payments effectively, speaking their language and addressing their unique experiences. Developed in collaboration with Stichting Enver, this software solution aims to foster responsible bill payments by encouraging both organizations and young users to play an active role in the payment process.
+Seev offers a fresh approach to financial management, benefiting users and organizations alike. With personalized plans and reminders, users gain control responsibly. Promoting shared responsibility, Seev integrates online support and user-friendly features. Recognized with a Dutch Design Award, it aims to keep young individuals debt-free through dialogue and initiatives.
 
-**Background:**
-
-With 15% of young people burdened by debt and traditional collection methods hindering development and health, Seev addresses the issue through a more personal and social approach. Rather than relying on punitive measures such as fines and additional collection costs, Seev encourages a shift towards a compassionate and individualized solution.
-
-**Objectives:**
-
-- Create a mutually beneficial situation for both young individuals and organizations by offering a tool that supports responsible bill payments.
-- Provide a temporary, secure environment for young users to confidently take control of their finances.
-- Encourage a mindset shift, allowing young individuals to learn and grow from financial mistakes without feeling permanently burdened.
-
-**Key Features:**
-
-1. **Personalized Payment Plans:**
-    - Seev empowers young users to set up payment plans at the onset of a financial setback.
-    - Users can customize the amount and schedule of payments, choosing between automatic or manual transactions.
-2. **Reminder System:**
-    - The app incorporates a monthly reminder system to prompt users to address their outstanding payments.
-    - This proactive approach encourages users to take action and avoid accumulating further debt.
-3. **Integration with Online Support:**
-    - For cases where users are unable to make payments, Seev facilitates a seamless connection to online support services.
-4. **Shared Responsibility:**
-    - Seev challenges the conventional notion of individual responsibility for debt and promotes a shared responsibility model.
-    - It encourages organizations and creditors to actively participate in preventing debt by offering a helping hand instead of punitive measures.
-
-**Impact and Recognition:**
-
-- Positive feedback from users who appreciate the app's use of clear and relatable language.
-- Successful implementation at Albeda College, resulting in an improved incasso policy and a reduction in the stigma surrounding discussions about debts and finances.
-- Recognition with a Dutch Design Award and plans for further expansion in collaboration with partners and professional organizations in 2021.
-
-Seev represents a pragmatic step in reshaping the conversation around debt, aiming to involve a diverse range of stakeholders in addressing the issue and ultimately keeping more young individuals debt-free.
+[Thijs Koerselman](https://www.vauxlab.com/) and I developed the back-end and hybrid app using React Native and Firebase. Collaborating closely with designers and stakeholders, I tackled challenges head-on, particularly the integration with the administrative department of the school during the pilot phase. This collaboration ensured that Seev met their specific needs while maintaining its user-friendly interface. My responsibilities included designing and implementing backend systems, ensuring seamless integration with the frontend, and addressing any technical hurdles that arose. Through these efforts, Seev was able to provide a secure and efficient platform for users to manage their finances responsibly.

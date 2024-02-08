@@ -7,17 +7,12 @@ at: { name: 'Afdeling Buitengewone Zaken', url: 'http://afdelingbuitengewonezake
 clients: [{ name: 'Studio Ruiter Janssen', url: 'http://ruiterjanssen.nl' }]
 ---
 
-![Screenshot](apartheid-revisited.png)
+![Screenshot from Apartheid Revisited](apartheid-revisited.png)
 
-Apartheid Revisited invites you to learn about apartheid by zooming through an information landscape, ingeniously designed by Ruiter Janssen. It shows the history, applies a human scale to the numbers and gives opportunity to reflect upon our current times.
+Apartheid Revisited offers a unique exploration of apartheid history through an interactive information landscape designed by Ruiter Janssen. This project bridges the gap between historical facts and personal reflection, inviting users to navigate through a digital realm that applies a human scale to the narrative.
 
-Ruiter asked Afdeling Buitengewone Zaken to help him take his work - which usually manifests itself on paper - into the digital realm. We took an iterative approach; starting with lo-fi sketches and reflecting upon experiments, the design and its technical implementation emerged simultaneously.
+![Screenshot from Apartheid Revisited](apartheid-2.png)
 
-I created a tool that allowed us to integrate a 3D-model, exported from Blender, with our ThreeJS environment. This allowed Ruiter and me to work closely together and quickly try out new things.
+Partnering with Ruiter Janssen, Afdeling Buitengewone Zaken embarked on a collaborative journey to transform his traditional paper-based work into a dynamic digital experience. Through an iterative process, we combined lo-fi sketches with technical experimentation to shape the design and implementation concurrently.
 
-Technology used:
-
-- JavaScript
-- VueJS
-- ThreeJS
-- Blender
+My contribution involved developing a tool to seamlessly integrate 3D models from Blender into our ThreeJS environment, facilitating efficient collaboration and rapid prototyping. Leveraging JavaScript, VueJS, and ThreeJS technologies, we breathed life into Ruiter's vision, offering users a thought-provoking journey through history and contemporary relevance.

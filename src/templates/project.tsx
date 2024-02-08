@@ -25,6 +25,9 @@ const StyledPage = styled(Page)`
   li::before {
     content: '- ';
   }
+  ul {
+    margin-bottom: 1rem;
+  }
 `
 
 interface ProjectTemplateProps {
@@ -55,18 +58,37 @@ interface ProjectTemplateProps {
             url: string
           }
         ]
+        collaborators: [
+          {
+            name: string
+            url: string
+          }
+        ]
       }
     }
   }
 }
 
-const ProjectTemplate: React.SFC<ProjectTemplateProps> = ({ data }) => {
-  const { title, clients, url, at } = data.markdownRemark.frontmatter
+const ProjectTemplate: React.FunctionComponent<ProjectTemplateProps> = ({ data }) => {
+  const { title, clients, url, at, collaborators } = data.markdownRemark.frontmatter
   return (
     <StyledPage>
       <Container>
         <StyledH1>{title}</StyledH1>
         <Metadata>
+          {collaborators && (
+            <p>
+              with{' '}
+              {collaborators.map((collaborator, i) => (
+                <span key={`collaborator-${i}`}>
+                  {i > 0 ? (i >= collaborators.length - 1 ? ' and ' : ', ') : ''}
+                  <a target="_blank" href={collaborator.url}>
+                    {collaborator.name}
+                  </a>
+                </span>
+              ))}
+            </p>
+          )}
           {at && (
             <p>
               @{' '}
@@ -128,6 +150,10 @@ export const query = graphql`
           url
         }
         clients {
+          name
+          url
+        }
+        collaborators {
           name
           url
         }
