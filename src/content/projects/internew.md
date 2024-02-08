@@ -16,7 +16,4 @@ The Internew installation, featured at the REBOOT exhibition in the New Institut
 
 Participants interact with a touch screen. Powered by a chat bot, the installation prompts users to share their perspectives on the internet. Participants are encouraged to reflect on their preferences and concerns, shaping their vision for the internet's evolution.
 
-![The Internew](./internew-2.png)
-*© Pieter Kers*
-
 Through user input, screens generate related words and images, fostering collaboration and creativity. This iterative process enables participants to construct collage-like compositions, visually representing their future internet ideals.

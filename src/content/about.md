@@ -4,7 +4,7 @@ title: 'About'
 ---
 ![Luuk Schipperheijn](luuk.jpg)
 
-I am Luuk Schipperheijn, a creative developer with a broad range of experience encompassing
+I am Luuk Schipperheijn, a Rotterdam-based creative developer with a broad range of experience encompassing
 front-end, back-end, and various programming languages and
 frameworks. Comfortable working on diverse project types, from
 mobile and web applications to desktop solutions, prototpes and
