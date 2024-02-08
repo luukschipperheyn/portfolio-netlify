@@ -37,11 +37,12 @@ export const colors = {
 }
 
 export const uiColors = {
-  active: { background: colors.lightBlue, text: colors.black },
-  link: { background: colors.black, text: colors.pink },
+  active: { background: colors.pink, text: colors.black },
+  internalLink: { background: colors.black, text: colors.pink },
+  link: { background: colors.black, text: colors.turqoise },
   hoveredLink: { background: colors.black, text: colors.white },
-  collapsible: { background: colors.pink, text: colors.black },
-  expandable: { background: colors.green, text: colors.white }
+  collapsible: { background: colors.lightBlue, text: colors.black },
+  expandable: { background: colors.black, text: colors.lightBlue }
 }
 
 export const fonts = {
@@ -80,7 +81,10 @@ export const dimensions = {
     regular: 1.45,
     heading: 1.2
   },
-  containerPadding: 1.5
+  containerPadding: {
+    v: 10,
+    h: 1.5
+  }
 }
 
 export const heights = {

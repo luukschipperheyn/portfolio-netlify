@@ -1,12 +1,11 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { graphql, Link, StaticQuery } from 'gatsby'
 import Img from 'gatsby-image/withIEPolyfill'
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import { FunctionComponent } from 'react'
 import CollapsibleList from '../components/CollapsibleList'
 import Page from '../components/Page'
 import { uiColors } from '../styles/variables'
-import { useDebouncedCallback } from 'use-debounce'
-import { css } from '@emotion/react'
 
 const StyledImg = styled(Img)`
   position: relative;
@@ -42,6 +41,10 @@ const StyledUl = styled.ul`
   margin-bottom: 0.5rem;
 `
 
+const Section = styled.div`
+  margin-bottom: 1rem;
+`
+
 const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => {
   const StyledLink = (props: any) => (
     <Link
@@ -50,8 +53,8 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
         color: uiColors.active.text
       }}
       css={css`
-        background: ${uiColors.link.background};
-        color: ${uiColors.link.text};
+        background: ${uiColors.internalLink.background};
+        color: ${uiColors.internalLink.text};
       `}
       onClick={onClickLink}
       {...props}
@@ -73,11 +76,11 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
       render={data => {
         return (
           <Page {...props}>
-            <div><StyledImg fixed={data.luuk.childImageSharp.fixed} /></div>
-            <div>
-              This is the portfolio of Luuk Schipperheijn, Rotterdam-based creative developer.
-            </div>
-            <div>
+            {/* <div><StyledImg fixed={data.luuk.childImageSharp.fixed} /></div> */}
+            <Section>
+              This is the portfolio of Luuk Schipperheijn, a creative developer.
+            </Section>
+            <Section>
               <CollapsibleList label="work">
                 <StyledUl>
                   <StyledLi><StyledLink to="/projects/internew/">the internew</StyledLink></StyledLi>
@@ -91,8 +94,10 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
                   <StyledLi><StyledLink to="/projects/openr/">openr</StyledLink></StyledLi>
                 </StyledUl>
               </CollapsibleList>
+            </Section>
+            <Section>
               <StyledLink to="/about">about</StyledLink>
-            </div>
+            </Section>
 
           </Page>
         )

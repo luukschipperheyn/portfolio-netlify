@@ -1,15 +1,17 @@
-import * as React from 'react'
 import { graphql } from 'gatsby'
+import * as React from 'react'
 
-import Page from '../components/Page'
-import Container from '../components/Container'
 import styled from '@emotion/styled'
-import { uiColors } from '../styles/variables'
+import Container from '../components/Container'
+import Page from '../components/Page'
+import { colors } from '../styles/variables'
 
 const StyledH1 = styled.h1`
-  background: ${uiColors.active.background};
-  color: ${uiColors.active.text};
+  background: ${colors.darkGreen};
+  color: ${colors.blue};
+  font-size: 3rem;
 `
+
 
 const Metadata = styled.div`
   font-size: 12px;

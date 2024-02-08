@@ -8,7 +8,7 @@ const StyledPage = styled.div`
   display: block;
   flex: 1;
   position: relative;
-  padding: ${dimensions.containerPadding}rem;
+  padding: ${dimensions.containerPadding.v}rem ${dimensions.containerPadding.h}rem ;
   max-width: 100%;
   // border-right: 1px solid ${colors.grey};
 `
