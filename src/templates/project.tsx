@@ -73,9 +73,9 @@ const ProjectTemplate: React.FunctionComponent<ProjectTemplateProps> = ({ data }
   const { title, clients, url, at, collaborators } = data.markdownRemark.frontmatter
   return (
     <StyledPage>
-      <Container>
-        <StyledH1>{title}</StyledH1>
-        <Metadata>
+      <Container className='collide'>
+        <StyledH1 className='collide'>{title}</StyledH1>
+        <Metadata className='collide'>
           {collaborators && (
             <p>
               with{' '}
@@ -119,7 +119,7 @@ const ProjectTemplate: React.FunctionComponent<ProjectTemplateProps> = ({ data }
           )}
         </Metadata>
         {/* eslint-disable-next-line react/no-danger */}
-        <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
+        <div className='collide' dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
       </Container>
     </StyledPage>
   )

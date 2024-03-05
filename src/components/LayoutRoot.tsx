@@ -10,7 +10,7 @@ const StyledLayoutRoot = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background: ${uiColors.background};
+  // background: ${uiColors.background};
   color: ${colors.white};
   overflow: hidden;
   h3 {

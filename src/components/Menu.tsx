@@ -77,11 +77,11 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
         return (
           <Page {...props}>
             {/* <div><StyledImg fixed={data.luuk.childImageSharp.fixed} /></div> */}
-            <Section>
+            <Section className='collide'>
               This is the portfolio of Luuk Schipperheijn,<br></br>a creative developer.
             </Section>
-            <Section>
-              <CollapsibleList label="work">
+            <Section className='collide'>
+              <CollapsibleList label="work" >
                 <StyledUl>
                   <StyledLi><StyledLink to="/projects/internew/">the internew</StyledLink></StyledLi>
                   <StyledLi><StyledLink to="/projects/apartheid-revisited/">apartheid revisited</StyledLink></StyledLi>
@@ -96,7 +96,7 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
                 </StyledUl>
               </CollapsibleList>
             </Section>
-            <Section>
+            <Section className='collide'>
               <StyledLink to="/about">about</StyledLink>
             </Section>
 

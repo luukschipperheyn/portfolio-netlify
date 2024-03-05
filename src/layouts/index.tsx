@@ -13,6 +13,7 @@ import '../styles/normalize'
 import { breakpoints } from '../styles/variables'
 import { HLocation, Location, LocationProps } from '@reach/router'
 import { css } from '@emotion/react'
+import { Background } from '../components/Background'
 
 interface StaticQueryProps {
   site: {
@@ -142,7 +143,12 @@ const IndexLayout: React.FC<Props & React.PropsWithChildren> = ({ children, loca
               <link rel="mask-icon" href="/safari-pinned-tab.svg" color={colors.lightBlue} />
               <meta name="msapplication-TileColor" content={colors.pink} />
               <meta name="theme-color" content={colors.pink}></meta>
+
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.17/paper-full.min.js"></script>
+              <link rel="stylesheet" href="style.css" />
             </Helmet>
+            {typeof window !== 'undefined' && <Background />}
             <MenuScrollContainer
               css={css`
                 @media screen and (max-width: ${breakpoints.md}px) {
