@@ -4,11 +4,11 @@ import * as React from 'react'
 import styled from '@emotion/styled'
 import Container from '../components/Container'
 import Page from '../components/Page'
-import { colors } from '../styles/variables'
+import { colors, uiColors } from '../styles/variables'
 
 const StyledH1 = styled.h1`
-  background: ${colors.darkGreen};
-  color: ${colors.blue};
+  background: ${uiColors.title.background};
+  color: ${uiColors.title.text};
   font-size: 3rem;
 `
 

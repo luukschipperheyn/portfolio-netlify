@@ -17,7 +17,7 @@ export const colors = {
   blue: '#0097fb',
   lightBlue: '#9CDCFE',
   purple: '#6c6cc4',
-  pink: '#b267e6',
+  pink: '#ff66cc',
   brand: '#663399',
   lilac: '#9d7cbf',
   accent: '#ffb238',
@@ -37,12 +37,14 @@ export const colors = {
 }
 
 export const uiColors = {
-  active: { background: colors.pink, text: colors.black },
-  internalLink: { background: "#0d3900", text: colors.pink },
-  link: { background: "#6d1111", text: colors.turqoise },
+  background: '#777799',
+  active: { background: colors.black, text: colors.pink },
+  internalLink: { text: "#003311", background: colors.pink },
+  link: { background: "#111111", text: "#8899ff" },
   hoveredLink: { background: colors.black, text: colors.white },
-  collapsible: { background: colors.lightBlue, text: "#220647" },
-  expandable: { background: "#220647", text: colors.lightBlue }
+  collapsible: { background: colors.lightBlue, text: "#334488" },
+  expandable: { background: "#334488", text: colors.lightBlue },
+  title: { background: "#8899ff", text: "#111111" }
 }
 
 export const fonts = {
@@ -68,8 +70,8 @@ export const widths = {
 
 export const dimensions = {
   fontSize: {
-    regular: 16,
-    large: 18
+    regular: 20,
+    large: 24
   },
   headingSizes: {
     h1: 2.441,

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Global, css } from '@emotion/react'
 import styled from '@emotion/styled'
 import normalize from '../styles/normalize'
-import { colors, breakpoints } from '../styles/variables'
+import { colors, uiColors } from '../styles/variables'
 
 const StyledLayoutRoot = styled.div`
   position: absolute;
@@ -10,7 +10,7 @@ const StyledLayoutRoot = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background: ${colors.darkGrey};
+  background: ${uiColors.background};
   color: ${colors.white};
   overflow: hidden;
   h3 {
