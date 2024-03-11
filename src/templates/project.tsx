@@ -28,6 +28,9 @@ const StyledPage = styled(Page)`
   ul {
     margin-bottom: 1rem;
   }
+  img {
+    box-shadow: none !important;
+  }
 `
 
 interface ProjectTemplateProps {

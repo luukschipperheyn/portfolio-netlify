@@ -15,52 +15,147 @@ z-index: -1;
 const StyledCanvas = styled.canvas`
 width: 100%;
 height: 100%;
+-webkit-filter: url("#goo");
+filter: url("#goo");
+opacity: 0.2;
 `
+
+
+class Swimmer {
+  path;
+  direction;
+  speed = 1;
+  size;
+  occupiedSteps = 0;
+  maxSpeed;
+  minSpeed;
+  constructor() {
+    this.size = 20 + Math.random() * 100;
+    var point = new paper.Point(
+      Math.random() * window.innerWidth,
+      Math.random() * window.innerHeight
+    );
+    this.path = new paper.Path.Circle(point, this.size);
+    this.direction = Math.random() * Math.PI * 2;
+    this.maxSpeed = 1.5 + Math.random() * 0.5;
+    this.minSpeed = 0.001 + Math.random() * 0.016;
+  }
+
+  isOutOfBounds(position) {
+    // console.log(position.x, position.y, window.innerWidth, window.innerHeight)
+    return (
+      position.x < -0 ||
+      position.x > window.innerWidth + 0 ||
+      position.y < -0 ||
+      position.y > window.innerHeight + 0
+    );
+  }
+
+  isCollidingWithElement(position) {
+    return $(document.elementsFromPoint(position.x, position.y)).hasClass(
+      "collide"
+    );
+  }
+
+  isOccupied(position) {
+    return (
+      this.isOutOfBounds(position) || this.isCollidingWithElement(position)
+    );
+
+    // const hitTest = viewLayer.hitTestAll(position);
+    // if (hitTest && hitTest.length > 1 && Math.random() > 0.1) {
+    //   this.occupiedSteps++;
+    //   return true;
+    // }
+    // return false;
+  }
+
+  getNewPosition(shouldMove) {
+    const generate = () => {
+      let point = new paper.Point(
+        this.path.position.x + Math.cos(this.direction) * (this.speed * 10),
+        this.path.position.y + Math.sin(this.direction) * (this.speed * 10)
+      );
+      if (this.isOutOfBounds(point)) {
+        point = point.add(paper.view.center.subtract(this.path.position).divide(20));
+      }
+      return point;
+    };
+    let newPosition = generate();
+    let attempt = 0;
+    while (this.isOccupied(newPosition) && attempt < 3) {
+      this.direction += (Math.random() - 0.5) * (shouldMove ? 0.1 : 0.1);
+      newPosition = generate();
+      attempt++;
+    }
+    if (!shouldMove && this.isOccupied(newPosition)) {
+      this.direction += Math.PI;
+    }
+    return newPosition;
+  }
+
+  update() {
+    const shouldMove = this.isOccupied(this.path.position);
+    if (shouldMove) {
+      this.speed = Math.min(
+        this.maxSpeed,
+        this.speed * (1.5 + Math.random() * 0.1)
+      );
+    } else {
+      this.speed = Math.max(
+        this.minSpeed,
+        this.speed * (0.8 + Math.random() * 0.1)
+      );
+    }
+    {
+      const newPosition = this.getNewPosition(shouldMove);
+      this.path.position = newPosition;
+    }
+  }
+}
+
 export const Background: React.FC = () => {
 
-  const pathsRef = useRef<any>([])
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const swimmersRef = useRef<Swimmer[]>([])
 
   useEffect(() => {
     window.addEventListener('load', () => {
       if (!canvasRef.current) return;
       paper.setup(canvasRef.current);
-      for (let i = 0; i < 200; i++) {
-        var path = new paper.Path.Circle(new paper.Point(
-          Math.random() * window.innerWidth,
-          Math.random() * window.innerHeight),
-          10);
-        path.fillColor = new paper.Color("#7790a0")
-        path.data.direction = Math.random() * Math.PI * 2;
-        pathsRef.current.push(path);
+
+      paper.project.currentStyle = {
+        fillColor: "white",
+      };
+
+      for (let i = 0; i < 100; i++) {
+        swimmersRef.current.push(new Swimmer());
       }
       paper.view.onFrame = () => {
-        for (let i = 0; i < 200; i++) {
-          var path = pathsRef.current[i];
-          const el = document.elementsFromPoint(path.position.x, path.position.y);
-          const $el = $(el);
-          if ($el.hasClass("collide")) {
-            path.position = new paper.Point(
-              Math.abs(path.position.x + Math.cos(path.data.direction) * 10),
-              Math.abs(path.position.y + Math.sin(path.data.direction) * 10)
-            );
-            path.data.direction += Math.random() * 0.001;
-          } else {
-            path.position = new paper.Point(
-              Math.abs(path.position.x + Math.cos(path.data.direction) * 0.05),
-              Math.abs(path.position.y + Math.sin(path.data.direction) * 0.05)
-            );
-            path.data.direction += (Math.random() - 0.5) * 0.2;
-          }
+        for (let i = 0; i < swimmersRef.current.length; i++) {
+          swimmersRef.current[i].update();
         }
-
-        paper.view.draw()
+        paper.view.draw();
       };
     })
   }, [])
 
 
   return (<StyledContainer className="background">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="32" result="blur" />
+          <feColorMatrix
+            in="blur"
+            mode="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 16 -11"
+            result="goo"
+          />
+          <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+        </filter>
+      </defs>
+    </svg>
     <StyledCanvas id="myCanvas" ref={canvasRef} />
   </StyledContainer>)
 

@@ -83,13 +83,13 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
             <Section className='collide'>
               <CollapsibleList label="work" >
                 <StyledUl>
-                  <StyledLi><StyledLink to="/projects/internew/">the internew</StyledLink></StyledLi>
                   <StyledLi><StyledLink to="/projects/apartheid-revisited/">apartheid revisited</StyledLink></StyledLi>
-                  <StyledLi><StyledLink to="/projects/imu/">i m u</StyledLink></StyledLi>
                   <StyledLi><StyledLink to="/projects/seev/">seev</StyledLink></StyledLi>
+                  <StyledLi><StyledLink to="/projects/touch-me-please/">touch me please</StyledLink></StyledLi>
+                  <StyledLi><StyledLink to="/projects/imu/">i m u</StyledLink></StyledLi>
+                  <StyledLi><StyledLink to="/projects/internew/">the internew</StyledLink></StyledLi>
                   <StyledLi><StyledLink to="/projects/goudenkoets/">goudenkoets.nl</StyledLink></StyledLi>
                   <StyledLi><StyledLink to="/projects/nike-manifesto-wall/">nike manifesto wall</StyledLink></StyledLi>
-                  <StyledLi><StyledLink to="/projects/touch-me-please/">touch me please</StyledLink></StyledLi>
                   <StyledLi><StyledLink to="/projects/modular-covert-camera/">modular covert camera</StyledLink></StyledLi>
                   <StyledLi><StyledLink to="/projects/mgnt/">mgnt</StyledLink></StyledLi>
                   <StyledLi><StyledLink to="/projects/openr/">openr</StyledLink></StyledLi>

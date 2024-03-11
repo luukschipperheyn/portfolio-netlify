@@ -36,6 +36,7 @@ const Container = ({ menuOpen, ...props }: any) => (
       word-wrap: break-word;
       word-break: break-word;
       height: 100%;
+      background: #7777a0;
       @media screen and (max-width: ${breakpoints.md}px) {
         width: calc(200% - 76px);
         position: relative;
@@ -143,12 +144,7 @@ const IndexLayout: React.FC<Props & React.PropsWithChildren> = ({ children, loca
               <link rel="mask-icon" href="/safari-pinned-tab.svg" color={colors.lightBlue} />
               <meta name="msapplication-TileColor" content={colors.pink} />
               <meta name="theme-color" content={colors.pink}></meta>
-
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.17/paper-full.min.js"></script>
-              <link rel="stylesheet" href="style.css" />
             </Helmet>
-            {typeof window !== 'undefined' && <Background />}
             <MenuScrollContainer
               css={css`
                 @media screen and (max-width: ${breakpoints.md}px) {
