@@ -9,7 +9,7 @@ clients: [{ name: 'Studio Ruiter Janssen', url: 'http://ruiterjanssen.nl' }]
 
 ![Screenshot from Apartheid Revisited](apartheid-revisited.png)
 
-Apartheid Revisited offers a unique exploration the history of apartheid in South Africa through an interactive information landscape designed by Ruiter Janssen. This project bridges the gap between historical facts and personal reflection, inviting users to navigate through a digital realm that applies a human scale to the narrative.
+Apartheid Revisited offers a unique exploration the history of apartheid - a system of institutionalized racial segregation - in South Africa through an interactive information landscape designed by Ruiter Janssen. This project bridges the gap between historical facts and personal reflection, inviting users to navigate through a digital realm that applies a human scale to the narrative.
 
 ![Screenshot from Apartheid Revisited](apartheid-2.png)
 
