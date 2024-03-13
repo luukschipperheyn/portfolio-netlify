@@ -31,6 +31,9 @@ const StyledPage = styled(Page)`
   img {
     box-shadow: none !important;
   }
+  video {
+    width: 100%;
+  }
 `
 
 interface ProjectTemplateProps {

@@ -7,6 +7,8 @@ import CollapsibleList from '../components/CollapsibleList'
 import Page from '../components/Page'
 import { uiColors } from '../styles/variables'
 
+import { useLocation } from '@reach/router';
+
 const StyledImg = styled(Img)`
   position: relative;
   top: 0.25rem;
@@ -46,6 +48,7 @@ const Section = styled.div`
 `
 
 const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => {
+  const location = useLocation()
   const StyledLink = (props: any) => (
     <Link
       activeStyle={{
@@ -81,9 +84,10 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
               This is the portfolio of Luuk Schipperheijn,<br></br>a creative developer.
             </Section>
             <Section className='collide'>
-              <CollapsibleList label="work" >
+              <CollapsibleList label="work" initiallyOpen={location.pathname === '/' ? false : true}>
                 <StyledUl>
                   <StyledLi><StyledLink to="/projects/apartheid-revisited/">apartheid revisited</StyledLink></StyledLi>
+                  <StyledLi><StyledLink to="/projects/li-ma/">li-ma</StyledLink></StyledLi>
                   <StyledLi><StyledLink to="/projects/seev/">seev</StyledLink></StyledLi>
                   <StyledLi><StyledLink to="/projects/touch-me-please/">touch me please</StyledLink></StyledLi>
                   <StyledLi><StyledLink to="/projects/imu/">i m u</StyledLink></StyledLi>
