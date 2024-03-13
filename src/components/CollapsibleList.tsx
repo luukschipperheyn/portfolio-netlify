@@ -3,7 +3,7 @@ import { keyframes, css } from '@emotion/react'
 import * as React from 'react'
 import { uiColors, colors } from '../styles/variables'
 
-const StyledUl = styled.ul`
+const StyledUl = styled.div`
   padding-left: 0;
   position: relative;
 `

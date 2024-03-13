@@ -132,6 +132,9 @@ const IndexLayout: React.FC<Props & React.PropsWithChildren> = ({ children, loca
           <Container menuOpen={menuOpen}>
             <Helmet
               title={data.site.siteMetadata.title}
+              htmlAttributes={{
+                lang: 'en',
+              }}
               meta={[
                 { name: 'description', content: data.site.siteMetadata.description },
                 { name: 'keywords', content: data.site.siteMetadata.keywords }

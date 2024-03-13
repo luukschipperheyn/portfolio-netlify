@@ -3,9 +3,9 @@
 module.exports = {
   siteMetadata: {
     title: 'luuk.computer',
-    description: 'Portfolio website of Luuk Schipperheyn. Freelance full-stack creative developer.',
+    description: 'The portfolio of Luuk Schipperheyn, a creative developer.',
     keywords:
-      'freelance full-stack creative developer full stack javascript react native android python django vue supercollider max/msp processing creative coding interactive installation',
+      'freelance full-stack creative developer full stack javascript react native android python django vue supercollider max/msp processing creative coding arduino interactive installation',
     siteUrl: 'https://www.luuk.computer/',
     author: {
       name: 'Luuk Schipperheyn',
