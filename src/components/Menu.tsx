@@ -41,7 +41,6 @@ const StyledLi = styled.li`
     display: inline-block;
     width: 1rem;
     height: 1px;
-    margin-right: 5px;
     border-bottom: 1px solid white;
   }
 `
@@ -67,36 +66,36 @@ const FilterContainer = styled.div`
 
 const typeColors = {
   web: {
-    background: '#009427',
-    hover: '#69ff91',
-    text: '#ffffff'
+    hover: '#175728',
+    background: '#60fd8a'
   },
   app: {
-    background: '#335577',
-    hover: '#3a8cdf',
-    text: '#ffffff'
+    hover: '#19436d',
+    background: '#58acff'
   },
   installation: {
-    background: '#993366',
-    hover: '#ff379b',
-    text: '#ffffff'
+    hover: '#7e21bb',
+    background: '#968fff'
   },
   product: {
-    background: '#997722',
-    hover: '#ffcd4f',
-    text: '#ffffff'
+    hover: '#9b5f11',
+    background: '#fdd674'
   }
 }
 
-const TypeLabel = styled.div<{ type: keyof typeof typeColors; selected?: boolean }>`
+const TypeLabel = styled.div<{ type: keyof typeof typeColors; selected?: boolean; hovered?: boolean }>`
   display: inline-block;
-  background: ${(props) => (props.selected ? typeColors[props.type].hover : typeColors[props.type].background)};
-  color: ${(props) => typeColors[props.type].text};
+  background: ${(props) => typeColors[props.type].background};
+  color: black;
   font-size: 0.5rem;
   cursor: pointer;
-  border: 2px solid ${(props) => (props.selected ? typeColors[props.type].background : 'transparent')};
+  line-height: 1.1;
+  padding-top: 2px;
+  border-bottom: 2px solid ${(props) => (props.selected ? typeColors[props.type].hover : 'transparent')};
   &:hover {
-    background: ${(props) => typeColors[props.type].hover};
+    /* color: white;
+    background: ${(props) => typeColors[props.type].hover}; */
+    border-bottom-color: ${(props) => typeColors[props.type].hover};
   }
 `
 
@@ -139,7 +138,7 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
       css={css`
         background: ${uiColors.internalLink.background};
         color: ${uiColors.internalLink.text};
-        margin-right: 0.3rem;
+        /* margin-right: 0.3rem; */
       `}
       onClick={onClickLink}
       {...props}
@@ -149,17 +148,16 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
   const TypeItem: React.FC<PropsWithChildren & { type: keyof typeof typeColors }> = ({ type, children, ...props }) => {
     const StyledDot = styled.div`
       box-sizing: content-box;
-      width: 4px;
-      height: 4px;
-      display: inline-block;
-      border: 2px solid ${typeColors[type].background};
+      width: ${selectedType === type || hoveredType === type ? '5px' : '0px'};
+      height: 23px;
+      margin-bottom: -6px;
       position: relative;
-      bottom: 2px;
-      background: ${selectedType === type || hoveredType === type ? typeColors[type].hover : typeColors[type].background};
-      color: ${typeColors[type].text};
+      top: 0px;
+      display: inline-block;
+      background: ${typeColors[type].background};
       cursor: pointer;
       &:hover {
-        background: ${typeColors[type].hover};
+        border-color: ${typeColors[type].hover};
       }
     `
     if (selectedType === null || selectedType === type) {
