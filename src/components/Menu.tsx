@@ -7,7 +7,7 @@ import CollapsibleList from '../components/CollapsibleList'
 import Page from '../components/Page'
 import { uiColors } from '../styles/variables'
 
-import { useLocation } from '@reach/router';
+import { useLocation } from '@reach/router'
 
 const StyledImg = styled(Img)`
   position: relative;
@@ -22,12 +22,12 @@ type MenuProps = {
 
 const StyledLi = styled.li`
   position: relative;
-  padding-left:1.3rem;
+  padding-left: 1.3rem;
   bottom: -0.5rem;
   :before {
     position: absolute;
     bottom: 0.5rem;
-    left:0;
+    left: 0;
     content: '';
     display: inline-block;
     width: 1rem;
@@ -58,39 +58,38 @@ const FilterContainer = styled.div`
 
 const typeColors = {
   web: {
-    background: "#009427",
-    hover: "#ff9400",
-    text: "#ffffff"
+    background: '#009427',
+    hover: '#69ff91',
+    text: '#ffffff'
   },
   app: {
-    background: "#335577",
-    hover: "#3388ff",
-    text: "#ffffff"
+    background: '#335577',
+    hover: '#3a8cdf',
+    text: '#ffffff'
   },
   installation: {
-    background: "#993366",
-    hover: "#ff3300",
-    text: "#ffffff"
+    background: '#993366',
+    hover: '#ff379b',
+    text: '#ffffff'
   },
   product: {
-    background: "#997722",
-    hover: "#aaaa44",
-    text: "#ffffff"
-  },
+    background: '#997722',
+    hover: '#ffcd4f',
+    text: '#ffffff'
+  }
 }
 
-const TypeLabel = styled.div<{ type: keyof typeof typeColors, selected?: boolean }>`
+const TypeLabel = styled.div<{ type: keyof typeof typeColors; selected?: boolean }>`
   display: inline-block;
-  background: ${props => props.selected ? typeColors[props.type].hover : typeColors[props.type].background};
-  color: ${props => typeColors[props.type].text};
+  background: ${(props) => (props.selected ? typeColors[props.type].hover : typeColors[props.type].background)};
+  color: ${(props) => typeColors[props.type].text};
   font-size: 0.5rem;
   cursor: pointer;
-  border: 2px solid ${props => props.selected ? typeColors[props.type].background : 'transparent'};
+  border: 2px solid ${(props) => (props.selected ? typeColors[props.type].background : 'transparent')};
   &:hover {
-    background: ${props => typeColors[props.type].hover};
+    background: ${(props) => typeColors[props.type].hover};
   }
 `
-
 
 const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => {
   const location = useLocation()
@@ -98,8 +97,10 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
   const [hoveredType, setHoveredType] = useState<null | keyof typeof typeColors>(null)
 
   const typeClicked = (type: keyof typeof typeColors) => {
-    setSelectedType(selectedType => {
-      if (selectedType === type) { return null }
+    setSelectedType((selectedType) => {
+      if (selectedType === type) {
+        return null
+      }
       return type
     })
   }
@@ -129,7 +130,7 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
       border: 2px solid ${typeColors[type].background};
       position: relative;
       bottom: 2px;
-      background: ${(selectedType === type || hoveredType === type) ? typeColors[type].hover : typeColors[type].background} ;
+      background: ${selectedType === type || hoveredType === type ? typeColors[type].hover : typeColors[type].background};
       color: ${typeColors[type].text};
       cursor: pointer;
       &:hover {
@@ -137,28 +138,32 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
       }
     `
     if (selectedType === null || selectedType === type) {
-      return <StyledLi {...props}>
-        {children}
-        <StyledDot
-          title={type}
-          onClick={() => typeClicked(type)}
-          onMouseEnter={() => setHoveredType(type)}
-          onMouseLeave={() => setHoveredType(null)}
-        />
-      </StyledLi>
+      return (
+        <StyledLi {...props}>
+          {children}
+          <StyledDot
+            title={type}
+            onClick={() => typeClicked(type)}
+            onMouseEnter={() => setHoveredType(type)}
+            onMouseLeave={() => setHoveredType(null)}
+          />
+        </StyledLi>
+      )
     }
     return null
   }
   const TypeButton: React.FC<{ type: keyof typeof typeColors }> = ({ type }) => {
-    return <TypeLabel
-      selected={type === selectedType}
-      type={type}
-      onClick={() => typeClicked(type)}
-      onMouseEnter={() => setHoveredType(type)}
-      onMouseLeave={() => setHoveredType(null)}
-    >
-      {type}
-    </TypeLabel>
+    return (
+      <TypeLabel
+        selected={type === selectedType}
+        type={type}
+        onClick={() => typeClicked(type)}
+        onMouseEnter={() => setHoveredType(type)}
+        onMouseLeave={() => setHoveredType(null)}
+      >
+        {type}
+      </TypeLabel>
+    )
   }
   return (
     <StaticQuery
@@ -173,14 +178,14 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
           }
         }
       `}
-      render={data => {
+      render={(data) => {
         return (
           <Page {...props}>
             {/* <div><StyledImg fixed={data.luuk.childImageSharp.fixed} /></div> */}
-            <Section className='collide'>
+            <Section className="collide">
               This is the portfolio of Luuk Schipperheijn,<br></br>a creative developer.
             </Section>
-            <Section className='collide'>
+            <Section className="collide">
               <CollapsibleList label="work" initiallyOpen={location.pathname === '/' ? false : true}>
                 <FilterContainer>
                   <TypeButton type="web" />
@@ -189,24 +194,45 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
                   <TypeButton type="product" />
                 </FilterContainer>
                 <StyledUl>
-                  <TypeItem type="web"><StyledLink to="/projects/apartheid-revisited/">apartheid revisited</StyledLink></TypeItem>
-                  <TypeItem type="web"><StyledLink to="/projects/li-ma/">li-ma</StyledLink></TypeItem>
-                  <TypeItem type="app"><StyledLink to="/projects/seev/">seev</StyledLink></TypeItem>
-                  <TypeItem type="installation"><StyledLink to="/projects/touch-me-please/">touch me please</StyledLink></TypeItem>
-                  <TypeItem type="installation"><StyledLink to="/projects/imu/">i m u</StyledLink></TypeItem>
-                  <TypeItem type="installation"><StyledLink to="/projects/internew/">the internew</StyledLink></TypeItem>
-                  <TypeItem type="web"><StyledLink to="/projects/goudenkoets/">goudenkoets.nl</StyledLink></TypeItem>
-                  <TypeItem type="installation"><StyledLink to="/projects/nike-manifesto-wall/">nike manifesto wall</StyledLink></TypeItem>
-                  <TypeItem type="product"><StyledLink to="/projects/modular-covert-camera/">modular covert camera</StyledLink></TypeItem>
-                  <TypeItem type="installation"><StyledLink to="/projects/mgnt/">mgnt</StyledLink></TypeItem>
-                  <TypeItem type="app"><StyledLink to="/projects/openr/">openr</StyledLink></TypeItem>
+                  <TypeItem type="web">
+                    <StyledLink to="/projects/apartheid-revisited/">apartheid revisited</StyledLink>
+                  </TypeItem>
+                  <TypeItem type="web">
+                    <StyledLink to="/projects/li-ma/">li-ma</StyledLink>
+                  </TypeItem>
+                  <TypeItem type="app">
+                    <StyledLink to="/projects/seev/">seev</StyledLink>
+                  </TypeItem>
+                  <TypeItem type="installation">
+                    <StyledLink to="/projects/touch-me-please/">touch me please</StyledLink>
+                  </TypeItem>
+                  <TypeItem type="installation">
+                    <StyledLink to="/projects/imu/">i m u</StyledLink>
+                  </TypeItem>
+                  <TypeItem type="installation">
+                    <StyledLink to="/projects/internew/">the internew</StyledLink>
+                  </TypeItem>
+                  <TypeItem type="web">
+                    <StyledLink to="/projects/goudenkoets/">goudenkoets.nl</StyledLink>
+                  </TypeItem>
+                  <TypeItem type="installation">
+                    <StyledLink to="/projects/nike-manifesto-wall/">nike manifesto wall</StyledLink>
+                  </TypeItem>
+                  <TypeItem type="product">
+                    <StyledLink to="/projects/modular-covert-camera/">modular covert camera</StyledLink>
+                  </TypeItem>
+                  <TypeItem type="installation">
+                    <StyledLink to="/projects/mgnt/">mgnt</StyledLink>
+                  </TypeItem>
+                  <TypeItem type="app">
+                    <StyledLink to="/projects/openr/">openr</StyledLink>
+                  </TypeItem>
                 </StyledUl>
               </CollapsibleList>
             </Section>
-            <Section className='collide'>
+            <Section className="collide">
               <StyledLink to="/about">about</StyledLink>
             </Section>
-
           </Page>
         )
       }}
