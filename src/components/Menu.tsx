@@ -144,8 +144,8 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
           <StyledDot
             title={type}
             onClick={() => typeClicked(type)}
-            onMouseEnter={() => setHoveredType(type)}
-            onMouseLeave={() => setHoveredType(null)}
+            onMouseOver={() => setHoveredType(type)}
+            onMouseOut={() => setHoveredType(null)}
           />
         </StyledLi>
       )
@@ -158,8 +158,8 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
         selected={type === selectedType}
         type={type}
         onClick={() => typeClicked(type)}
-        onMouseEnter={() => setHoveredType(type)}
-        onMouseLeave={() => setHoveredType(null)}
+        onMouseOver={() => setHoveredType(type)}
+        onMouseOut={() => setHoveredType(null)}
       >
         {type}
       </TypeLabel>
