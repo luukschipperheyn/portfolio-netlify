@@ -9,6 +9,15 @@ import { uiColors } from '../styles/variables'
 
 import { useLocation } from '@reach/router'
 
+function isTouchDevice() {
+  try {
+    document.createEvent('TouchEvent')
+    return true
+  } catch (e) {
+    return false
+  }
+}
+
 const StyledImg = styled(Img)`
   position: relative;
   top: 0.25rem;
@@ -160,8 +169,8 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
           <StyledDot
             title={type}
             onClick={(e) => eventHandler(e, type)}
-            onMouseOver={(e) => eventHandler(e, type)}
-            onMouseOut={(e) => eventHandler(e, type)}
+            onMouseOver={isTouchDevice() ? undefined : (e) => eventHandler(e, type)}
+            onMouseOut={isTouchDevice() ? undefined : (e) => eventHandler(e, type)}
           />
         </StyledLi>
       )
@@ -174,8 +183,8 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
         selected={type === selectedType}
         type={type}
         onClick={(e) => eventHandler(e, type)}
-        onMouseOver={(e) => eventHandler(e, type)}
-        onMouseOut={(e) => eventHandler(e, type)}
+        onMouseOver={isTouchDevice() ? undefined : (e) => eventHandler(e, type)}
+        onMouseOut={isTouchDevice() ? undefined : (e) => eventHandler(e, type)}
       >
         {type}
       </TypeLabel>
