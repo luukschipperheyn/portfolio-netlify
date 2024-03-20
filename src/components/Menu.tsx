@@ -96,13 +96,29 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
   const [selectedType, setSelectedType] = useState<null | keyof typeof typeColors>(null)
   const [hoveredType, setHoveredType] = useState<null | keyof typeof typeColors>(null)
 
-  const typeClicked = (type: keyof typeof typeColors) => {
-    setSelectedType((selectedType) => {
-      if (selectedType === type) {
-        return null
-      }
-      return type
-    })
+  const eventHandler = (event: React.MouseEvent<HTMLDivElement, MouseEvent>, type: keyof typeof typeColors) => {
+    const { type: eventType, bubbles } = event
+    switch (eventType) {
+      case 'mouseover':
+      case 'mouseenter':
+        setHoveredType(type)
+        break
+      case 'mouseout':
+      case 'mouseleave':
+        setHoveredType(null)
+        break
+      case 'click':
+        setHoveredType(null)
+        setSelectedType((selectedType) => {
+          if (selectedType === type) {
+            return null
+          }
+          return type
+        })
+        break
+      default:
+        break
+    }
   }
 
   const StyledLink = (props: any) => (
@@ -143,9 +159,9 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
           {children}
           <StyledDot
             title={type}
-            onClick={() => typeClicked(type)}
-            onMouseOver={() => setHoveredType(type)}
-            onMouseOut={() => setHoveredType(null)}
+            onClick={(e) => eventHandler(e, type)}
+            onMouseOver={(e) => eventHandler(e, type)}
+            onMouseOut={(e) => eventHandler(e, type)}
           />
         </StyledLi>
       )
@@ -157,9 +173,9 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
       <TypeLabel
         selected={type === selectedType}
         type={type}
-        onClick={() => typeClicked(type)}
-        onMouseOver={() => setHoveredType(type)}
-        onMouseOut={() => setHoveredType(null)}
+        onClick={(e) => eventHandler(e, type)}
+        onMouseOver={(e) => eventHandler(e, type)}
+        onMouseOut={(e) => eventHandler(e, type)}
       >
         {type}
       </TypeLabel>

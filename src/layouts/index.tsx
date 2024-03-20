@@ -54,9 +54,9 @@ const StyledMdMenu = ({ show, ...props }: any) => (
       display: none;
       @media screen and (max-width: ${breakpoints.md}px) {
         display: block;
-        position: absolute;
+        position: fixed;
         top: 0;
-        right: 0;
+        left: 0;
         padding: 24px 8px;
         opacity: ${show ? 1 : 0};
         transition: opacity 0.4s ease-in-out;
@@ -68,7 +68,7 @@ const StyledMdMenu = ({ show, ...props }: any) => (
   />
 )
 
-const ScrollContainer = ({ pointer, ...props }: any) => (
+const ScrollContainer = ({ hideScroll, pointer, ...props }: any) => (
   <div
     css={css`
       flex: 1;
@@ -77,6 +77,7 @@ const ScrollContainer = ({ pointer, ...props }: any) => (
       display: flex;
       @media screen and (max-width: ${breakpoints.md}px) {
         cursor: ${pointer};
+        overflow-y: ${hideScroll ? 'hidden' : 'auto'};
       }
     `}
     {...props}
@@ -133,7 +134,7 @@ const IndexLayout: React.FC<Props & React.PropsWithChildren> = ({ children, loca
             <Helmet
               title={data.site.siteMetadata.title}
               htmlAttributes={{
-                lang: 'en',
+                lang: 'en'
               }}
               meta={[
                 { name: 'description', content: data.site.siteMetadata.description },
@@ -149,6 +150,7 @@ const IndexLayout: React.FC<Props & React.PropsWithChildren> = ({ children, loca
               <meta name="theme-color" content={colors.pink}></meta>
             </Helmet>
             <MenuScrollContainer
+              hideScroll={!menuOpen}
               css={css`
                 @media screen and (max-width: ${breakpoints.md}px) {
                   cursor: ${menuOpen ? 'auto' : 'pointer'};
