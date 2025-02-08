@@ -19,6 +19,6 @@ Participants interact with a touch screen. Powered by a chat bot, the installati
 
 Through user input, screens generate related words and images, fostering collaboration and creativity. This iterative process enables participants to construct collage-like compositions, visually representing their future internet ideals.
 
-<iframe src="https://reboot.mot.studio/view" width="100%" height="600" frameborder="0"></iframe>
+<iframe src="https://reboot.luuk.computer/view" width="100%" height="600" frameborder="0"></iframe>
 
 *A live view of the most recent additions to the Internew*
