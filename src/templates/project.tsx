@@ -70,13 +70,17 @@ interface ProjectTemplateProps {
             url: string
           }
         ]
+        exhibition?: {
+          name: string
+          url: string
+        }
       }
     }
   }
 }
 
 const ProjectTemplate: React.FunctionComponent<ProjectTemplateProps> = ({ data }) => {
-  const { title, clients, url, at, collaborators } = data.markdownRemark.frontmatter
+  const { title, clients, url, at, collaborators, exhibition } = data.markdownRemark.frontmatter
   return (
     <StyledPage>
       <Container className='collide'>
@@ -123,6 +127,15 @@ const ProjectTemplate: React.FunctionComponent<ProjectTemplateProps> = ({ data }
               </a>
             </p>
           )}
+            {exhibition && (
+
+            <p>
+              Currently on show @{' '}
+              <a target="_blank" href={exhibition.url}>
+                {exhibition.name}
+              </a>
+            </p>
+          )}
         </Metadata>
         {/* eslint-disable-next-line react/no-danger */}
         <div className='collide' dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
@@ -160,6 +173,10 @@ export const query = graphql`
           url
         }
         collaborators {
+          name
+          url
+        }
+        exhibition {
           name
           url
         }

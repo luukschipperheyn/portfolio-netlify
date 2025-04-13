@@ -2,7 +2,6 @@
 layout: project
 title: 'Seev'
 slug: seev
-url: 'https://seevapp.nl'
 clients: [{ name: 'Afdeling Buitengewone Zaken', url: 'https://www.afdelingbuitengewonezaken.nl' }, { name: 'Garage2020', url: 'https://www.garage2020.nl/' }]
 collaborators: [{ name: 'Thijs Koerselman', url: 'https://www.vauxlab.com' }]
 ---
