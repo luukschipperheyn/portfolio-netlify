@@ -80,6 +80,10 @@ const typeColors = {
   product: {
     hover: '#9b5f11',
     background: '#fdd674'
+  },
+  agency: {
+    hover: '#b51a00',
+    background: '#ff6b52'
   }
 }
 
@@ -211,12 +215,16 @@ const Menu: FunctionComponent<MenuProps> = ({ onClickLink, data, ...props }) => 
             <Section className="collide">
               <CollapsibleList label="work" initiallyOpen={location.pathname === '/' ? false : true}>
                 <FilterContainer>
+                  <TypeButton type="agency" />
                   <TypeButton type="web" />
                   <TypeButton type="installation" />
                   <TypeButton type="app" />
                   <TypeButton type="product" />
                 </FilterContainer>
                 <StyledUl>
+                  <TypeItem type="agency">
+                    <StyledLink to="/projects/wearereasonablepeople/">wearereasonablepeople</StyledLink>
+                  </TypeItem>
                   <TypeItem type="web">
                     <StyledLink to="/projects/apartheid-revisited/">apartheid revisited</StyledLink>
                   </TypeItem>

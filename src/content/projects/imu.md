@@ -5,7 +5,7 @@ url: 'https://juulvanderlaan.nl/portfolio/imu/'
 collaborators: [{ name: "Juul Van Der Laan", url: "https://juulvanderlaan.nl"}]
 exhibition: {name: "Eye Filmmuseum", url: "https://www.eyefilm.nl/en/whats-on/who-are-you-blok-c/1418083"}
 ---
-<iframe src="https://player.vimeo.com/video/948252883?h=62fa7df733&amp;title=0" width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen class="video_embed"></iframe>
+<iframe src="https://app.videas.fr/embed/media/ad085a8c-2f03-46ee-97ca-105e0792819e/" width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen class="video_embed"></iframe>
 
 I M U is an interactive film installation in which we manipulate the viewer’s image through deepfake.
 

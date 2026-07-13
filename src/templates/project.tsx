@@ -130,7 +130,7 @@ const ProjectTemplate: React.FunctionComponent<ProjectTemplateProps> = ({ data }
             {exhibition && (
 
             <p>
-              Currently on show @{' '}
+              Previously on show @{' '}
               <a target="_blank" href={exhibition.url}>
                 {exhibition.name}
               </a>
