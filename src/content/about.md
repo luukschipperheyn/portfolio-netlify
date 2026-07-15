@@ -12,7 +12,7 @@ production environments. Experienced in both solo and team
 settings, with a particular focus on contributing to the design
 process.
 
-Check out my <a href="./resume-luuk-schipperheijn.pdf" download>resume</a> to find out about specific skills and experience. You can reach me at [luuk@luuk.computer](mailto:luuk@luuk.computer)
+Check out my <a href="/resume-luuk-schipperheijn.pdf" download>resume</a> to find out about specific skills and experience. You can reach me at [luuk@luuk.computer](mailto:luuk@luuk.computer)
 
 Links:
 - [LinkedIn](https://www.linkedin.com/in/luuk-schipperheijn-92805a30/)
